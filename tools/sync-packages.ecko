@@ -1,0 +1,158 @@
+## Regenerate the official-package reference pages under `packages/`.
+##
+##   cd docs && ecko tools/sync-packages.ecko [path-to-stdlib]
+##
+## Each page is a header built from the package's `ecko.json` - what it is, how
+## to install it, what it may do - followed by the API reference `ecko doc`
+## extracts from the `##` comments in its source. The source of truth is the
+## package repo, so these pages are generated, never hand-edited: fixing a
+## description means fixing the doc comment and running this again.
+
+import std.fs
+import std.os
+import std.string as str
+
+STDLIB = if len(os.args()) > 0 { os.args()[0] } else { "../stdlib" }
+OUT = "packages"
+
+## Which `ecko` extracts the references. Following `export ... from` into a
+## package's sibling files landed after 0.9.4, and without it every multi-file
+## package documents as a title and nothing else - so point `ECKO_BIN` at a
+## build that has it until a release does.
+ECKO = os.env_or("ECKO_BIN", "ecko")
+
+## `ecko get` records a dependency under the repository name, and a repository
+## name is not always a valid Ecko identifier. These are the names the packages
+## document for themselves; anything absent imports under its own name.
+ALIASES = {
+    "mysql-client": "mysql",
+    "postgresql-client": "postgres",
+    "redis-client": "redis",
+    "smtp-client": "smtp",
+    "tui-ecko": "tui",
+}
+
+## What a capability list means for someone deciding whether to import this.
+fn capability_note(caps) {
+    if len(caps) == 0 {
+        return "Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment."
+    }
+    quoted = map(caps, fn(c) "`" + c + "`")
+    which = if len(quoted) == 1 {
+        quoted[0]
+    } else {
+        str.join(take(quoted, len(quoted) - 1), ", ") + " and " + last(quoted)
+    }
+    "Declares {which}. A capability is only advisory in the manifest: what the package actually gets is the `grant` you give it when you import it."
+}
+
+## Drop the `# name` line `ecko doc` opens with - the page supplies its own
+## title and description above the API.
+fn strip_title(md) {
+    if not starts_with(md, "# ") { return md }
+    at = index_of(md, "\n")
+    if at < 0 { "" } else { md[at + 1..] }
+}
+
+fn page(repo, manifest, import_name, body) {
+    install = "```bash\necko get " + manifest.module + "\n```"
+    usage = "```ecko\nimport " + import_name + "\n```"
+    alias_note = if import_name == repo {
+        ""
+    } else {
+        "\n`ecko get` records this under `{repo}`, which is not a valid Ecko identifier. Alias it to `{import_name}` in the `dependencies` block of your `ecko.json`.\n"
+    }
+    ## The API sections below arrive as `##` headings from `ecko doc`, which is
+    ## the level the page wants them at - so the metadata ends at a rule rather
+    ## than at a heading that would sit among the functions as if it were one.
+
+    "# {import_name}
+
+{manifest.description}
+
+{install}
+
+{usage}
+{alias_note}
+{capability_note(manifest.capabilities)}
+
+Version {manifest.version} - [source](https://{manifest.module}) - MIT.
+
+---
+
+" + str.trim_end(strip_title(body)) + "\n"
+}
+
+## The index section this tool owns, start to finish. Rewriting it from the
+## heading down is what keeps the list from drifting out of step with the pages
+## beside it - the failure that put a deleted page in a deploy check twice.
+INDEX = "index.md"
+HEADING = "## Official packages"
+INTRO = "Batteries that live outside the binary: each one is written in Ecko, versioned
+on its own, and deletable. `ecko get` vendors a package under `vendor/` and pins
+a hash; what it is allowed to do is the `grant` you give it at the import, not
+what its manifest asks for.
+
+Every reference below is generated from the `##` comments in the package's own
+source, so it says what the code says."
+
+## Replace the owned section in place, leaving the rest of the index alone. The
+## section runs from its heading to the next `##` heading or horizontal rule.
+fn rewrite_index(section) {
+    lines = split(fs.read(INDEX), "\n")
+    mut out = []
+    mut skipping = false
+    for line in lines {
+        if skipping {
+            if starts_with(line, "## ") or line == "---" { skipping = false } else { continue }
+        }
+        if line == HEADING {
+            out = out + [section]
+            skipping = true
+            continue
+        }
+        out = out + [line]
+    }
+    fs.write(INDEX, str.join(out, "\n"))
+}
+
+mut written = 0
+mut empty = []
+mut listed = []
+
+fs.mkdir(OUT)
+
+for repo in sort(fs.list_dir(STDLIB)) {
+    dir = "{STDLIB}/{repo}"
+    manifest_path = "{dir}/ecko.json"
+    entry = "{dir}/main.ecko"
+    if not fs.exists(manifest_path) or not fs.exists(entry) { continue }
+    manifest = json_decode(fs.read(manifest_path))
+    alias = get(ALIASES, repo)
+    import_name = if alias == null { repo } else { alias }
+
+    result = os.exec(ECKO, ["doc", entry])
+    if result.code != 0 {
+        print("  FAILED {repo}: {str.trim(result.stderr)}")
+        continue
+    }
+    body = result.stdout
+
+    ## An entrypoint that re-exports from siblings used to document as an empty
+    ## page. That is fixed, but a package with genuinely no `##` comments would
+    ## still ship a hollow reference - say so rather than publish it quietly.
+    entries = len(split(body, "\n## ")) - 1
+    if entries == 0 { empty = empty + [repo] }
+
+    fs.write("{OUT}/{import_name}.md", page(repo, manifest, import_name, body))
+    listed = listed + ["- [`{import_name}`](./{OUT}/{import_name}.md) - {manifest.description}"]
+    print("  {OUT}/{import_name}.md  ({string(entries)} entries)")
+    written = written + 1
+}
+
+rewrite_index(HEADING + "\n\n" + INTRO + "\n\n" + str.join(listed, "\n") + "\n")
+print("  {INDEX}  ({string(written)} linked)")
+
+print("")
+print("{string(written)} package references -> {OUT}/")
+if len(empty) > 0 { print("no documented exports: " + str.join(empty, ", ")) }
