@@ -3,7 +3,7 @@
 SaaS web-app batteries for Ecko: auto-escaping HTML templates, signed cookies, sessions, and CORS/security middleware.
 
 ```bash
-ecko get github.com/ecko-sh/webkit
+ecko get github.com/ecko-lang/webkit
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import webkit
 
 Declares `fs:read` and `net`. A capability is only advisory in the manifest: what the package actually gets is the `grant` you give it when you import it.
 
-Version 0.10.0 - [source](https://github.com/ecko-sh/webkit) - MIT.
+Version 0.10.0 - [source](https://github.com/ecko-lang/webkit) - MIT.
 
 ---
 

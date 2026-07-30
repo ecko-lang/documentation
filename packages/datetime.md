@@ -3,7 +3,7 @@
 Calendar dates, times, and durations for Ecko: components, arithmetic, and formatting over Unix-ms timestamps. Pure - no capabilities.
 
 ```bash
-ecko get github.com/ecko-sh/datetime
+ecko get github.com/ecko-lang/datetime
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import datetime
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/datetime) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/datetime) - MIT.
 
 ---
 

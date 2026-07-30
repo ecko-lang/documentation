@@ -3,7 +3,7 @@
 A MySQL/MariaDB client written in Ecko: classic protocol + mysql_native_password over std.net.
 
 ```bash
-ecko get github.com/ecko-sh/mysql-client
+ecko get github.com/ecko-lang/mysql-client
 ```
 
 ```ecko
@@ -14,7 +14,7 @@ import mysql
 
 Declares `net`. A capability is only advisory in the manifest: what the package actually gets is the `grant` you give it when you import it.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/mysql-client) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/mysql-client) - MIT.
 
 ---
 

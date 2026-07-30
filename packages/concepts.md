@@ -40,7 +40,7 @@ capabilities, and a package can only pass on what it already holds:**
 ```json
 {
   "dependencies": {
-    "mysql": { "path": "github.com/ecko-sh/mysql-client", "grant": ["net"] }
+    "mysql": { "path": "github.com/ecko-lang/mysql-client", "grant": ["net"] }
   }
 }
 ```

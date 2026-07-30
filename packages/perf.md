@@ -3,7 +3,7 @@
 Measure the performance of your own Ecko code: time, measure, and bench (best-of-N stats)
 
 ```bash
-ecko get github.com/ecko-sh/perf
+ecko get github.com/ecko-lang/perf
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import perf
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/perf) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/perf) - MIT.
 
 ---
 

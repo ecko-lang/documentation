@@ -3,7 +3,7 @@
 IPv4/IPv6 address parsing, validation, CIDR membership, and private-range checks for Ecko. Pure - no capabilities.
 
 ```bash
-ecko get github.com/ecko-sh/ip
+ecko get github.com/ecko-lang/ip
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import ip
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/ip) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/ip) - MIT.
 
 ---
 

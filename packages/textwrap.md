@@ -3,7 +3,7 @@
 Wrap, fill, indent, dedent, and shorten text for Ecko - prompt building and terminal output. Pure - no capabilities.
 
 ```bash
-ecko get github.com/ecko-sh/textwrap
+ecko get github.com/ecko-lang/textwrap
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import textwrap
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/textwrap) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/textwrap) - MIT.
 
 ---
 

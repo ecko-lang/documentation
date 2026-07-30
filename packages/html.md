@@ -3,7 +3,7 @@
 A tolerant HTML parser for Ecko: parse to a node tree, extract text, and find elements. Great for feeding web content to ai. Pure - no capabilities.
 
 ```bash
-ecko get github.com/ecko-sh/html
+ecko get github.com/ecko-lang/html
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import html
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/html) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/html) - MIT.
 
 ---
 

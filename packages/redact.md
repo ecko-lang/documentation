@@ -3,7 +3,7 @@
 Sensitive-key detection and masking for safe logging: is_sensitive_key, mask, and recursive map_of. Pure - no capabilities.
 
 ```bash
-ecko get github.com/ecko-sh/redact
+ecko get github.com/ecko-lang/redact
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import redact
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/redact) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/redact) - MIT.
 
 ---
 

@@ -29,7 +29,6 @@ ALIASES = {
     "postgresql-client": "postgres",
     "redis-client": "redis",
     "smtp-client": "smtp",
-    "tui-ecko": "tui",
 }
 
 ## What a capability list means for someone deciding whether to import this.

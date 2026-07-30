@@ -3,7 +3,7 @@
 A PostgreSQL client written in Ecko: v3 wire protocol + SCRAM-SHA-256 over std.net.
 
 ```bash
-ecko get github.com/ecko-sh/postgresql-client
+ecko get github.com/ecko-lang/postgresql-client
 ```
 
 ```ecko
@@ -14,7 +14,7 @@ import postgres
 
 Declares `net`. A capability is only advisory in the manifest: what the package actually gets is the `grant` you give it when you import it.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/postgresql-client) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/postgresql-client) - MIT.
 
 ---
 

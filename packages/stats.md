@@ -3,7 +3,7 @@
 Descriptive statistics for Ecko: mean, median, mode, variance, stdev, quantiles. Pure - no capabilities.
 
 ```bash
-ecko get github.com/ecko-sh/stats
+ecko get github.com/ecko-lang/stats
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import stats
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/stats) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/stats) - MIT.
 
 ---
 

@@ -3,7 +3,7 @@
 An SMTP client (RFC 5321) written in Ecko, over std.net raw sockets + STARTTLS.
 
 ```bash
-ecko get github.com/ecko-sh/smtp-client
+ecko get github.com/ecko-lang/smtp-client
 ```
 
 ```ecko
@@ -14,7 +14,7 @@ import smtp
 
 Declares `net`. A capability is only advisory in the manifest: what the package actually gets is the `grant` you give it when you import it.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/smtp-client) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/smtp-client) - MIT.
 
 ---
 

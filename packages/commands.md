@@ -2,8 +2,8 @@
 
 ```bash
 ecko init                                  # scaffold ecko.json
-ecko get github.com/ecko-sh/url            # fetch, vendor, pin
-ecko get github.com/ecko-sh/url@v0.9.4     # a specific version
+ecko get github.com/ecko-lang/url            # fetch, vendor, pin
+ecko get github.com/ecko-lang/url@v0.9.4     # a specific version
 ecko install                               # rebuild vendor/ from the lockfile
 ecko update [name...]                      # re-fetch and re-pin
 ecko remove url                            # unvendor and unpin
@@ -23,7 +23,7 @@ a name and version, a place for dependencies, and configuration readable as
 Resolves straight from the forge; there is no index in the way.
 
 ```bash
-ecko get github.com/ecko-sh/redis-client@v0.9.4
+ecko get github.com/ecko-lang/redis-client@v0.9.4
 ```
 
 It vendors under `vendor/`, records the dependency, and pins a hash. If the
@@ -31,7 +31,7 @@ repository name is not a valid Ecko identifier - `redis-client` has a dash - set
 the import name yourself in the manifest, along with any grant it needs:
 
 ```json
-{ "dependencies": { "redis": { "path": "github.com/ecko-sh/redis-client", "grant": ["net"] } } }
+{ "dependencies": { "redis": { "path": "github.com/ecko-lang/redis-client", "grant": ["net"] } } }
 ```
 
 ## `install`

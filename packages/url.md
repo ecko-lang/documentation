@@ -3,7 +3,7 @@
 URL parsing, query strings, and reference resolution for Ecko.
 
 ```bash
-ecko get github.com/ecko-sh/url
+ecko get github.com/ecko-lang/url
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import url
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/url) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/url) - MIT.
 
 ---
 

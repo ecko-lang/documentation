@@ -3,7 +3,7 @@
 A general-purpose cache written in Ecko: in-memory LRU with TTL over an optional disk store. get/set/remember(key, ttl, fn).
 
 ```bash
-ecko get github.com/ecko-sh/cache
+ecko get github.com/ecko-lang/cache
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import cache
 
 Declares `fs:read` and `fs:write`. A capability is only advisory in the manifest: what the package actually gets is the `grant` you give it when you import it.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/cache) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/cache) - MIT.
 
 ---
 

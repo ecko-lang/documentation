@@ -3,7 +3,7 @@
 Command-line argument parsing for Ecko: typed flags, options, positionals, defaults, and generated usage. Pure - no capabilities.
 
 ```bash
-ecko get github.com/ecko-sh/cli
+ecko get github.com/ecko-lang/cli
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import cli
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/cli) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/cli) - MIT.
 
 ---
 

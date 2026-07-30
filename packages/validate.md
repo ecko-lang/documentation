@@ -3,7 +3,7 @@
 A data/input validation library written in Ecko: composable validator functions, whole-object schemas, collect-all errors. Pure - no capabilities.
 
 ```bash
-ecko get github.com/ecko-sh/validate
+ecko get github.com/ecko-lang/validate
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import validate
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/validate) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/validate) - MIT.
 
 ---
 

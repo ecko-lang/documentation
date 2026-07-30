@@ -3,7 +3,7 @@
 A Redis client (RESP2) written in Ecko, over std.net raw sockets + TLS.
 
 ```bash
-ecko get github.com/ecko-sh/redis-client
+ecko get github.com/ecko-lang/redis-client
 ```
 
 ```ecko
@@ -14,7 +14,7 @@ import redis
 
 Declares `net`. A capability is only advisory in the manifest: what the package actually gets is the `grant` you give it when you import it.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/redis-client) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/redis-client) - MIT.
 
 ---
 

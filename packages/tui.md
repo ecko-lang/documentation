@@ -3,18 +3,16 @@
 Terminal UI composition for Ecko: width-aware pad/center/truncate, bordered boxes, and aligned tables over std.term.
 
 ```bash
-ecko get github.com/ecko-sh/tui-ecko
+ecko get github.com/ecko-lang/tui
 ```
 
 ```ecko
 import tui
 ```
 
-`ecko get` records this under `tui-ecko`, which is not a valid Ecko identifier. Alias it to `tui` in the `dependencies` block of your `ecko.json`.
-
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/tui-ecko) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/tui) - MIT.
 
 ---
 

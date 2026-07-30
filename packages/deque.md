@@ -3,7 +3,7 @@
 A double-ended queue for Ecko: push/pop/peek at both ends, amortized O(1). Immutable two-stack deque. Pure - no capabilities.
 
 ```bash
-ecko get github.com/ecko-sh/deque
+ecko get github.com/ecko-lang/deque
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import deque
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/deque) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/deque) - MIT.
 
 ---
 

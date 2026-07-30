@@ -3,7 +3,7 @@
 Parse and serialize HTTP cookies for client sessions: read Set-Cookie headers into a jar, build the Cookie request header. Pure - no capabilities.
 
 ```bash
-ecko get github.com/ecko-sh/cookies
+ecko get github.com/ecko-lang/cookies
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import cookies
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/cookies) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/cookies) - MIT.
 
 ---
 

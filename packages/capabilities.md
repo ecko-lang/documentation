@@ -5,7 +5,7 @@ A package cannot decide what it is allowed to do. The importer decides.
 ```json
 {
   "dependencies": {
-    "mysql": { "path": "github.com/ecko-sh/mysql-client", "grant": ["net"] }
+    "mysql": { "path": "github.com/ecko-lang/mysql-client", "grant": ["net"] }
   }
 }
 ```
@@ -64,8 +64,8 @@ rather than globally:
 ```json
 {
   "dependencies": {
-    "textwrap": "github.com/ecko-sh/textwrap",
-    "smtp": { "path": "github.com/ecko-sh/smtp-client", "grant": ["net"] }
+    "textwrap": "github.com/ecko-lang/textwrap",
+    "smtp": { "path": "github.com/ecko-lang/smtp-client", "grant": ["net"] }
   }
 }
 ```

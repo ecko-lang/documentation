@@ -3,7 +3,7 @@
 A priority queue (min-heap) for Ecko: push/pop/peek, heapify, and top-k. Immutable skew heap. Pure - no capabilities.
 
 ```bash
-ecko get github.com/ecko-sh/heap
+ecko get github.com/ecko-lang/heap
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import heap
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/heap) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/heap) - MIT.
 
 ---
 

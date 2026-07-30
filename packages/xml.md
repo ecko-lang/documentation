@@ -3,7 +3,7 @@
 An XML parser for Ecko: parse to a node tree, query by tag or path, extract text, and rebuild. Pure - no capabilities.
 
 ```bash
-ecko get github.com/ecko-sh/xml
+ecko get github.com/ecko-lang/xml
 ```
 
 ```ecko
@@ -12,7 +12,7 @@ import xml
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.4 - [source](https://github.com/ecko-sh/xml) - MIT.
+Version 0.9.5 - [source](https://github.com/ecko-lang/xml) - MIT.
 
 ---
 
