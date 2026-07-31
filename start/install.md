@@ -59,7 +59,7 @@ On Windows, unzip and move `ecko.exe` somewhere on your `PATH`.
 Swap `latest` for a tag:
 
 ```
-https://ecko.sh/dl/v0.9.4/ecko-x86_64-linux.tar.gz
+https://ecko.sh/dl/v0.9.5/ecko-x86_64-linux.tar.gz
 ```
 
 `https://ecko.sh/dl/latest.txt` names the tag that `latest` currently points at,

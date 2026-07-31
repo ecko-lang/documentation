@@ -84,10 +84,10 @@ See [`ai` and typed output](../ai/typed-output.md) for the full set.
 Types catch type errors. Contracts catch the rest:
 
 ```ecko
-@ensures(len(result) <= 80, "must be at most 80 characters")
-fn headline(article) = ai "Write a one-line headline for: {article}"
+@ensures(len(result) <= 80)
+fn headline(article) = ai "Headline for: {article}"
 
-print(headline("A cat was rescued from a tree by a passing cyclist."))
+print(headline("A cat was rescued from a tree."))
 ```
 
 If the model returns something too long, Ecko feeds the failure back and retries

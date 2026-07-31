@@ -7,7 +7,7 @@ ecko init      # scaffold one
 ```json
 {
   "module": "github.com/ecko-lang/url",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "entrypoint": "main.ecko",
   "description": "URL parsing, query strings, and reference resolution.",
   "license": "MIT",
@@ -51,10 +51,10 @@ filesystem or the environment.
 ```json
 {
   "dependencies": {
-    "url": "github.com/ecko-lang/url@v0.9.4",
+    "url": "github.com/ecko-lang/url@v0.9.5",
     "mysql": {
       "path": "github.com/ecko-lang/mysql-client",
-      "version": "v0.9.4",
+      "version": "v0.9.5",
       "grant": ["net"]
     }
   }

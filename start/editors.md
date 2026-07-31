@@ -69,21 +69,27 @@ completion do not wait on that.
 
 ## JetBrains IDEs
 
-IntelliJ IDEA, WebStorm, PyCharm, and other IntelliJ-based products can run a custom
-language server.
+IntelliJ IDEA, WebStorm, PyCharm, GoLand, CLion, Rider and the rest of the family
+have a first-party plugin, including the free Community editions.
 
-### Built-in language servers
+### The plugin
 
-1. Open **Settings → Languages & Frameworks → Language Servers** (wording varies slightly by product).
-2. Add a server:
-   - **Command:** `ecko`
-   - **Arguments:** `lsp`
-3. Associate it with `*.ecko` files (or the Ecko file type if you create one).
+Install **Ecko** from the plugin marketplace, or build it from
+`editors/jetbrains-ecko` and install the zip through **Settings → Plugins → the
+gear icon → Install Plugin from Disk...**.
 
-### LSP4IJ plugin
+It gives you syntax highlighting from the same grammar the VS Code extension
+uses, plus diagnostics, completion, hover, go-to-definition and symbols through
+`ecko lsp`.
 
-If your build does not expose custom servers yet, install
-[LSP4IJ](https://plugins.jetbrains.com/plugin/22407-lsp4ij) and configure the same
-command and arguments there.
+The IDE will offer to install [LSP4IJ](https://plugins.jetbrains.com/plugin/22407-lsp4ij)
+alongside it. That is deliberate: the JetBrains platform's own LSP API ships only
+in the paid IDEs, and going through LSP4IJ means Community users get the same
+features.
+
+### Without the plugin
+
+Any IntelliJ-based IDE can run the server directly. Install LSP4IJ, add a server
+with command `ecko` and argument `lsp`, and associate it with `*.ecko` files.
 
 `ecko` must be on your `PATH`, or use an absolute path to the binary.

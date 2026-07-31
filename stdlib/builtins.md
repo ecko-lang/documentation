@@ -22,8 +22,9 @@ miss, where `m.k` and `xs[i]` raise. See
 ## Strings
 
 `upper`, `lower`, `trim`, `split`, `join`, `replace`, `contains`, `starts_with`,
-`ends_with`, `chars`, `lines`, `reverse`, `index_of`, `len`, `is_blank`,
-`escape_html`.
+`ends_with`, `chars`, `lines`, `reverse`, `index_of`, `len`, `escape_html`.
+
+`is_blank` is **not** a global - it lives in [`std.string`](./string.md).
 
 The full toolkit is [`std.string`](./string.md).
 

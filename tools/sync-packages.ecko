@@ -16,9 +16,9 @@ STDLIB = if len(os.args()) > 0 { os.args()[0] } else { "../stdlib" }
 OUT = "packages"
 
 ## Which `ecko` extracts the references. Following `export ... from` into a
-## package's sibling files landed after 0.9.4, and without it every multi-file
-## package documents as a title and nothing else - so point `ECKO_BIN` at a
-## build that has it until a release does.
+## package's sibling files landed in 0.9.5, and without it every multi-file
+## package documents as a title and nothing else - so on an older toolchain,
+## point `ECKO_BIN` at a build that has it.
 ECKO = os.env_or("ECKO_BIN", "ecko")
 
 ## `ecko get` records a dependency under the repository name, and a repository

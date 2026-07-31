@@ -17,8 +17,8 @@ An `ai` call can return the right *type* and the wrong *answer*. A contract is
 where you say what right means:
 
 ```ecko
-@ensures(len(result) <= 80, "must be at most 80 characters")
-fn headline(article) = ai "Write a one-line headline for: {article}"
+@ensures(len(result) <= 80)
+fn headline(article) = ai "Headline for: {article}"
 ```
 
 When the contract fails on an `ai`-bodied function, Ecko **feeds the failure back

@@ -3,7 +3,7 @@
 ```bash
 ecko init                                  # scaffold ecko.json
 ecko get github.com/ecko-lang/url            # fetch, vendor, pin
-ecko get github.com/ecko-lang/url@v0.9.4     # a specific version
+ecko get github.com/ecko-lang/url@v0.9.5     # a specific version
 ecko install                               # rebuild vendor/ from the lockfile
 ecko update [name...]                      # re-fetch and re-pin
 ecko remove url                            # unvendor and unpin
@@ -23,7 +23,7 @@ a name and version, a place for dependencies, and configuration readable as
 Resolves straight from the forge; there is no index in the way.
 
 ```bash
-ecko get github.com/ecko-lang/redis-client@v0.9.4
+ecko get github.com/ecko-lang/redis-client@v0.9.5
 ```
 
 It vendors under `vendor/`, records the dependency, and pins a hash. If the

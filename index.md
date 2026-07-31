@@ -74,7 +74,7 @@ curl -fsSLO https://ecko.sh/dl/latest/ecko-x86_64-linux.tar.gz.sha256
 shasum -a 256 -c ecko-x86_64-linux.tar.gz.sha256
 ```
 
-To pin a version, swap `latest` for the tag - `https://ecko.sh/dl/v0.9.4/...`;
+To pin a version, swap `latest` for the tag - `https://ecko.sh/dl/v0.9.5/...`;
 `https://ecko.sh/dl/latest.txt` says which tag `latest` currently is.
 
 Run a file, or start the REPL:

@@ -8,7 +8,7 @@ An interactive session. Bindings persist across lines, so you can build up
 state:
 
 ```
-ecko v0.9.4 // REPL on Linux // ecko.sh
+ecko v0.9.5 // REPL on Linux // ecko.sh
 > xs = [3, 1, 2]
 > sort(xs)
 [1, 2, 3]

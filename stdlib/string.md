@@ -114,7 +114,7 @@ True only if the string is **non-empty** and *every* character is in the class:
 of the opposite case - so `"A1!"` is upper, and `"123"` is neither.
 
 **The empty string is `false` for every predicate**, one uniform rule. For "empty
-or whitespace" use the global `is_blank`.
+or whitespace" use `string.is_blank`.
 
 ## Info and convert
 
