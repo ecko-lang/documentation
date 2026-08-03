@@ -78,6 +78,29 @@ fn handler(req) {
 unbounded body is a memory exhaustion, and an unbounded handler is a worker held
 forever.
 
+`ECKO_HTTP_READ_TIMEOUT_MS` (default 30000) bounds how long a connection may take
+to send its request headers, so a client that opens a socket and dribbles bytes is
+dropped rather than holding a connection. That is a different limit from the
+handler timeout, which only starts once a request has fully arrived.
+
+## Protocols
+
+HTTP/1.0 and 1.1, with keep-alive honoured and advertised in both directions.
+Chunked request and response bodies, `100-continue`, trailers and pipelining all
+work. HTTP/2 is negotiated over TLS through ALPN, falling back to HTTP/1.1 for
+clients that cannot speak it; cleartext h2c is not offered.
+
+## Compression
+
+Buffered responses over 1 KiB are compressed when the client asks for it with
+`Accept-Encoding: gzip` or `deflate`, gzip preferred. The response gains
+`Content-Encoding` and `Vary: Accept-Encoding`.
+
+Three things are left alone: already-compressed content types (`image/*`,
+`video/*`, `audio/*`, zip), any response whose handler set its own
+`Content-Encoding`, and streaming responses. Streams are never compressed because
+buffering one to compress it would defeat the point of streaming.
+
 ## Streaming and WebSockets
 
 `http.stream` sends a body fed by a [channel](../concurrency/channels.md), which is

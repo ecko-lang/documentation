@@ -44,9 +44,10 @@ budget: the call that would exceed it fails rather than spending.
 
 | variable | meaning |
 |---|---|
-| `ECKO_HTTP_WORKERS` | Worker threads for `http.serve`. Default `8` |
+| `ECKO_HTTP_WORKERS` | How many `http.serve` handler invocations run at once. Default `8` |
 | `ECKO_HTTP_REQUEST_TIMEOUT_MS` | Per-request handler timeout. `0` or unset means unlimited |
 | `ECKO_HTTP_MAX_BODY` | Max request body in bytes. Default 10 MiB |
+| `ECKO_HTTP_READ_TIMEOUT_MS` | How long a connection may take to send request headers, the slow-client deadline. Default `30000` |
 | `ECKO_MAX_WS_CONNS` | Max concurrent WebSocket connections. Default `1024` |
 
 ## Runtime limits
