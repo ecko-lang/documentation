@@ -1,7 +1,9 @@
 # `std.fs`
 
 Files and directories. Gated on `fs:read` and `fs:write` for
-[package](../packages/capabilities.md) code; root code has full authority.
+[package](../packages/capabilities.md) code; root code has full authority. Both
+capabilities take an optional path scope (`fs:write:./logs`), so a package can be
+confined to one directory.
 
 ```ecko
 import std.fs
@@ -18,6 +20,10 @@ fs.glob("src/**/*.ecko")
 
 fs.mkdir(p)  fs.copy(a, b)  fs.rename(a, b)  fs.remove(p)
 ```
+
+`copy` reads its source and writes its target, so for package code it needs
+`fs:read` on the first path and `fs:write` on the second. `rename` needs
+`fs:write` on both.
 
 ## Text or bytes
 
@@ -54,6 +60,9 @@ f = fs.temp_file()
 `temp_file` gives a unique path in the system temporary directory. Nothing cleans
 up after you - remove what you create.
 
+Both write into the system temp directory, so a package on a scoped `fs:write`
+needs that directory covered by its scope.
+
 ## Errors
 
 Everything raises `{ kind: "fs", path, message }` on failure. The `path` field is
@@ -73,5 +82,11 @@ is a path. If a request names a file, validate it - or better, do not use
 `fs` for it at all: [`web.static`](./web.md) resolves safely and is the right tool
 for serving files.
 
-Capabilities help but are not a path sandbox: `fs:read` grants reading, not reading
-*within a directory*.
+Capabilities do confine a package to a directory, if you grant them that way:
+`fs:read:./uploads` covers `./uploads` and nothing else, and neither `..` nor a
+symlink gets a path out of it. See
+[capabilities](../packages/capabilities.md#confining-a-package-to-one-directory).
+
+That protects you from a package. It does not protect a package from its own
+caller - your top-level code is ungated, so validating a path you built from a
+request is still your job.

@@ -21,7 +21,8 @@ sql.transaction(db, fn() {
 sql.close(db)
 ```
 
-`:memory:` is pure; a file database needs `fs:write`.
+`:memory:` is pure; a file database needs `fs:write` covering its path (a
+scoped grant confines which databases a package can open).
 
 ## Always use parameters
 

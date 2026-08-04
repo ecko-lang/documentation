@@ -220,7 +220,7 @@ runtime's architecture.
 
 - [Concepts](./packages/concepts.md) - bare imports, `vendor/`, and the three-layer model (kernel / std / packages)
 - [The `ecko.json` manifest](./packages/manifest.md) - `name`, `version`, `entrypoint`, `capabilities`, `dependencies`
-- [Capabilities & gating](./packages/capabilities.md) - `net`, `fs:read`, `fs:write`, `env`, `exec`; granted by the importer, attenuated down the tree
+- [Capabilities & gating](./packages/capabilities.md) - `net`, `fs:read`, `fs:write`, `env`, `exec`; granted by the importer, attenuated down the tree. The two `fs` names take a path scope (`fs:write:./logs`) that confines a package to one directory
 - [Lockfile & integrity](./packages/lockfile.md) - `ecko.lock` sha256 pins; commit `vendor/` for offline clones
 - [Package commands](./packages/commands.md) - `init`, `add`, `install`, `remove`, `update`, `pack`
 - [Building an executable](./packages/build.md) - `ecko build` bundles the interpreter + program into one file
