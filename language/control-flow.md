@@ -34,7 +34,13 @@ unless valid(x) { return err }
 0..=10      # inclusive: 0 to 10
 ```
 
-Ranges are lazy, so `for i in 0..1000000` does not build a list.
+Ranges are lazy, so `for i in 0..1000000` does not build a list. There is no
+size limit on iterating one - `for i in 0..30000000` is fine, and costs the same
+9 MB as any other loop.
+
+Turning a range into an actual list is what costs memory, so that is what is
+capped (10M elements). `list(0..30000000)` raises and says to iterate instead;
+`sum`, `count`, `first`, `min` and `max` all stream a range without building it.
 
 ## `for`
 
