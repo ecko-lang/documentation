@@ -8,6 +8,7 @@ fmt.pad_left("7", 4)                # "   7"
 fmt.pad_right("ab", 5)              # "ab   "
 fmt.truncate(long, 40)
 fmt.repeat("-", 20)
+fmt.fixed(3.14159, 2)               # "3.14"
 ```
 
 ## `format` needs a raw string
@@ -36,6 +37,23 @@ fmt.format(r"{} of {}", count, total)
 
 Reach for `format` when the **template is data**: read from a config file, chosen
 from a table, or reused across call sites with different arguments.
+
+## Fixed decimal places
+
+`fmt.fixed(value, places)` renders a number to a set number of decimals, padding
+with zeroes rather than trimming the text:
+
+```ecko
+fmt.fixed(1.5, 3)                   # "1.500"
+fmt.fixed(2.5, 0)                   # "3"
+fmt.fixed(decimal("0.07"), 2)       # "0.07"
+```
+
+Two details worth knowing. Halves go **away from zero**, so `2.5` at zero places
+is `"3"` - not the half-to-even most languages' formatters use. And a
+[`decimal`](../language/numbers.md) is rounded *in decimal*, never through a
+float, so an exact `0.07` stays `0.07` instead of picking up a binary artefact.
+That makes it the one to reach for when formatting money.
 
 ## Padding and truncating
 

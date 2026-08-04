@@ -16,12 +16,17 @@ fetch = async fn(url) http.get(url)   # async lambda
 still parses but is **deprecated**: [`ecko check`](../cli/check.md) warns and
 [`ecko fmt`](../cli/fmt.md) rewrites it.
 
-One gotcha: `fn(x) { ... }` reads its braces as a **block**, so a lambda that
-returns a map needs parentheses:
+A `fn(x) { ... }` body is a **block**, except when the brace opens a map
+literal - no statement can begin with `name :`, so there is no ambiguity:
 
 ```ecko
-fn(x) ({ value: x })
+fn(x) { value: x }      # returns a map
+fn(x) ({ value: x })    # the same thing, said explicitly
+fn(x) { y = x + 1
+        y * 2 }         # a block, because `y = ...` is a statement
 ```
+
+[`ecko fmt`](../cli/fmt.md) canonicalises the first form to the second.
 
 ## Defaults and named arguments
 

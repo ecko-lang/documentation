@@ -45,6 +45,12 @@ print(0.1 + 0.2)                # 0.30000000000000004
 The rules, chosen so money behaves:
 
 - **`decimal` mixes with `int`** and the result is `decimal`. `5m == 5` is `true`.
+- **`int`, `round`, `floor` and `ceil` accept a `decimal`** and return an `int`,
+  exactly - nothing routes through a float on the way. `int` truncates toward
+  zero; `round` takes halves away from zero, not the half-to-even a statistics
+  library would use, because money does not work that way. `float(aDecimal)`
+  stays rejected, for the same reason `decimal(aFloat)` is.
+  [`fmt.fixed`](../stdlib/fmt.md) renders one to a set number of places.
 - **`decimal` with `float` is a hard error.** A binary float has already lost
   precision; letting it into an exact calculation would silently corrupt the
   result. Convert explicitly if you truly mean to.

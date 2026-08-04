@@ -5,13 +5,27 @@ Around 95 functions are always in scope, with no import.
 ## Collections
 
 **Transform:** `map`, `filter`, `reduce`, `flatten`, `zip`, `enumerate`, `chunk`,
-`window`, `unique`, `reverse`, `sort`, `sort_by`, `group_by`, `partition`,
-`frequencies`, `select`.
+`window`, `unique`, `reverse`, `sort`, `sort_by`, `sort_with`, `group_by`,
+`partition`, `frequencies`, `select`.
 
-**Access:** `first`, `last`, `take`, `get`, `len`, `contains`, `index_of`,
-`find`, `count`, `any`, `all`, `sum`, `min`, `max`, `empty_map`, `keys`, `values`.
+**Access:** `first`, `last`, `take`, `drop`, `slice`, `get`, `len`, `contains`,
+`index_of`, `find`, `count`, `any`, `all`, `sum`, `min`, `max`, `empty_map`,
+`keys`, `values`.
 
-**Build:** `push`, `pop`, `insert`, `remove`, `range`, `list`.
+**Build:** `push`, `pop`, `set`, `insert`, `remove`, `range`, `list`.
+
+Three of those are easy to mix up:
+
+- `set(coll, key, value)` **replaces**; `insert` **splices** a new element in and
+  the list gets longer. On a map both set the key. Reaching for `insert` when you
+  meant `set` changes the length without saying so.
+- `drop(list, n)` is the complement of `take`, so `take(n) + drop(n)` rebuilds the
+  input. `slice(list, start, end)` is the half-open range, with out-of-range
+  bounds clamped rather than raised.
+- `sort_by` takes a **key**; `sort_with` takes a **comparator** returning a
+  negative number, zero or a positive one. Reach for `sort_with` when the order
+  cannot be reduced to a key - a comparison whose answer depends on the operands'
+  types, for instance.
 
 **Parallel:** [`pmap`](../concurrency/pmap.md).
 
