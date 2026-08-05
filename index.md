@@ -195,6 +195,8 @@ runtime's architecture.
 - [`std.humanize`](./stdlib/humanize.md) - `duration`, `size`, `relative`, `ordinal`, `plural`
 - [`std.zlib`](./stdlib/zlib.md) - `gzip`, `gunzip`, `deflate`, `inflate` over bytes
 - [`std.fs`](./stdlib/fs.md) - files and directories (`read`, `write`, `list_dir`, `copy`, `rename`, ...) - `fs:read` / `fs:write`
+- [`std.archive`](./stdlib/archive.md) - zip and tar containers (`zip_create`, `zip_extract`, `zip_list`, `tar_*`) - `fs:read` / `fs:write`
+- [`std.proc`](./stdlib/proc.md) - child processes with a timeout that reaps the whole process tree (`run`, `spawn`, `wait`, `kill`) - `exec`
 - [`std.signal`](./stdlib/signal.md) - OS signal handlers for graceful shutdown (`on`, `next`, `close`, `raise`) - `exec`
 - [`std.watch`](./stdlib/watch.md) - filesystem events (`open`, `next`, `close`) - `fs:read`
 - [`std.os`](./stdlib/os.md) - host environment and process: `env`, `env_or`, `set_env`, `args`, `cwd`, `platform`, `exec`, `exit` (`env` / `exec` gated)
