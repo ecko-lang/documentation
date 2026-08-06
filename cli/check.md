@@ -47,3 +47,16 @@ as you type.
 `0` when there is nothing at error level. Non-zero otherwise. Warnings alone do
 not change the exit status, so `ecko check` is usable as a CI gate without
 forcing warning-free code.
+
+Warnings are still printed, and a run that ends with warnings and no errors says
+so, so a `0` beside printed findings does not read as something being missed.
+
+```bash
+ecko check src/*.ecko            # errors fail, warnings inform
+ecko check --strict src/*.ecko   # any finding fails
+```
+
+`--strict` is for a project that controls all of its own source and wants a
+clean board. Leave it off where a warning is a considered choice: a package that
+exports `get`, `set` or `push` trips `shadows-builtin` by design, and there is
+no way to silence a single finding.
