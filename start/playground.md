@@ -39,6 +39,10 @@ The playground is the language kernel with nothing installed around it:
 - **No `async fn`, no streaming `ai` (`-> stream`), and no channels.** The
   browser build has no threads, so the primitives that depend on one return a
   clear error instead of running.
+- **`sleep` returns an error, for the same reason** - there is nothing to
+  block on in a single-threaded tab. `retry` still works: a failed attempt
+  just skips the wait before the next one instead of erroring, since the
+  only thing lost is the delay itself.
 - **`pmap` runs, but sequentially.** `pmap`'s contract is share-nothing, so a
   sequential pass produces the same result - only the parallelism is lost.
 - **Contract-checked recursion is capped at 256 levels.** A function using
