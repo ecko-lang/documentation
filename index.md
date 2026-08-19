@@ -125,6 +125,7 @@ runtime's architecture.
 - [The REPL](./start/repl.md) - interactive sessions, multi-line input
 - [Mock mode](./start/mock-mode.md) - how Ecko runs fully offline with no API key
 - [Editor support](./start/editors.md) - the VS Code grammar and the language server
+- [Playground](./start/playground.md) - try Ecko in the browser, no install, the real kernel compiled to WebAssembly
 
 ## Language
 
