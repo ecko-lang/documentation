@@ -29,8 +29,9 @@ The playground is the language kernel with nothing installed around it:
 
 - **No standard library.** The module links only the kernel, not `std`, so
   `import std.fs`, `import std.net`, `import std.sql` - any `std.*` module -
-  fails with "no module found". There is no filesystem to read and no
-  network to reach either way.
+  fails: `No module called 'std.fs' - check the name (e.g. std.json,
+  std.http)?`. There is no filesystem to read and no network to reach
+  either way.
 - **No package imports.** A playground program is a single file; there is no
   `vendor/` directory to resolve an import against.
 - **`ai` is mock only.** There is no key to configure and no live provider to
