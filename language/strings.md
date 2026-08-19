@@ -38,10 +38,39 @@ s[-3..]    # "llo"   negative indices count from the end
 s[1..-1]   # "ell"
 ```
 
+`slice(s, start, end)` is the same half-open range as a function, for when the
+bounds are computed rather than written:
+
+```ecko
+slice("hello world", 0, 5)   # "hello"
+slice("héllo", 1, 3)         # "él"   characters, not bytes
+```
+
 Slices are total: out-of-range bounds clamp (`s[2..99]` is `"llo"`) and a
 reversed range is empty - a slice takes what's there, it never errors. Single
 -index access (`s[i]`, `xs[i]`) stays strict and raises when out of bounds; use
 `get(...)` when absence is expected.
+
+## Raw strings
+
+`r"..."` turns off interpolation and escapes, for text that is full of braces or
+backslashes: CSS, regexes, format templates.
+
+```ecko
+css = r"body { margin: 0 }"        # braces stay literal
+pat = r"\d+\.\d+"                  # no escaping the escapes
+```
+
+For anything containing double quotes, use the triple form. A single `r"..."`
+ends at the first quote, so it can hold JSON's braces but not its quotes:
+
+```ecko
+r"""{"jsonrpc": "2.0", "method": "tools/list"}"""
+```
+
+That is the one to reach for when embedding JSON in a test or a fixture.
+Without it you have to build a map and `json.encode` it, which is fine for
+generated data and needless ceremony for a literal.
 
 ## Trim and split
 

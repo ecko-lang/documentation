@@ -197,7 +197,7 @@ runtime's architecture.
 - [`std.zlib`](./stdlib/zlib.md) - `gzip`, `gunzip`, `deflate`, `inflate` over bytes
 - [`std.fs`](./stdlib/fs.md) - files and directories (`read`, `write`, `list_dir`, `copy`, `rename`, ...) - `fs:read` / `fs:write`
 - [`std.archive`](./stdlib/archive.md) - zip and tar containers (`zip_create`, `zip_extract`, `zip_list`, `tar_*`) - `fs:read` / `fs:write`
-- [`std.proc`](./stdlib/proc.md) - child processes with a timeout that reaps the whole process tree (`run`, `spawn`, `wait`, `kill`) - `exec`
+- [`std.proc`](./stdlib/proc.md) - child processes with a timeout that reaps the whole process tree, and stdin/stdout on a long-lived one (`run`, `spawn`, `wait`, `kill`, `write`, `read_line`, `close_stdin`) - `exec`
 - [`std.signal`](./stdlib/signal.md) - OS signal handlers for graceful shutdown (`on`, `next`, `close`, `raise`) - `exec`
 - [`std.watch`](./stdlib/watch.md) - filesystem events (`open`, `next`, `close`) - `fs:read`
 - [`std.os`](./stdlib/os.md) - host environment and process: `env`, `env_or`, `set_env`, `args`, `cwd`, `platform`, `exec`, `exit` (`env` / `exec` gated)
@@ -274,19 +274,28 @@ what its manifest asks for.
 Every reference below is generated from the `##` comments in the package's own
 source, so it says what the code says.
 
+- [`bisect`](./packages/bisect.md) - Binary search over a sorted list: insertion points, membership, and order-preserving insert. Pure - no capabilities.
 - [`cache`](./packages/cache.md) - A general-purpose cache written in Ecko: in-memory LRU with TTL over an optional disk store. get/set/remember(key, ttl, fn).
 - [`cli`](./packages/cli.md) - Command-line argument parsing for Ecko: typed flags, options, positionals, defaults, and generated usage. Pure - no capabilities.
 - [`cookies`](./packages/cookies.md) - Parse and serialize HTTP cookies for client sessions: read Set-Cookie headers into a jar, build the Cookie request header. Pure - no capabilities.
 - [`datetime`](./packages/datetime.md) - Calendar dates, times, and durations for Ecko: components, arithmetic, and formatting over Unix-ms timestamps. Pure - no capabilities.
 - [`deque`](./packages/deque.md) - A double-ended queue for Ecko: push/pop/peek at both ends, amortized O(1). Immutable two-stack deque. Pure - no capabilities.
+- [`fuzzy`](./packages/fuzzy.md) - String similarity: Levenshtein, Jaro-Winkler, Dice and Jaccard, plus best-match selection over a list. Pure - no capabilities.
+- [`geo`](./packages/geo.md) - Geospatial basics: geohash encode/decode, great-circle distance and bearing, bounding boxes. Pure - no capabilities.
+- [`graph`](./packages/graph.md) - Adjacency-list graphs: build, traverse, and answer reachability and path questions. Pure - no capabilities.
 - [`heap`](./packages/heap.md) - A priority queue (min-heap) for Ecko: push/pop/peek, heapify, and top-k. Immutable skew heap. Pure - no capabilities.
 - [`html`](./packages/html.md) - A tolerant HTML parser for Ecko: parse to a node tree, extract text, and find elements. Great for feeding web content to ai. Pure - no capabilities.
+- [`inflect`](./packages/inflect.md) - URL slugs, English pluralisation, ordinals and identifier case conversion. Pure - no capabilities.
 - [`ip`](./packages/ip.md) - IPv4/IPv6 address parsing, validation, CIDR membership, and private-range checks for Ecko. Pure - no capabilities.
+- [`mcp`](./packages/mcp.md) - Model Context Protocol, both directions: call an MCP server's tools over stdio or HTTP, or be one.
+- [`mime`](./packages/mime.md) - Build MIME messages (multipart, attachments, RFC 5322) and look up media types by file extension. Pure - no capabilities.
+- [`money`](./packages/money.md) - Currency amounts on Decimal: exact arithmetic, ISO 4217 minor units, and allocation that never loses a cent. Pure - no capabilities.
 - [`mysql`](./packages/mysql.md) - A MySQL/MariaDB client written in Ecko: classic protocol + mysql_native_password over std.net.
 - [`perf`](./packages/perf.md) - Measure the performance of your own Ecko code: time, measure, and bench (best-of-N stats)
 - [`postgres`](./packages/postgres.md) - A PostgreSQL client written in Ecko: v3 wire protocol + SCRAM-SHA-256 over std.net.
 - [`redact`](./packages/redact.md) - Sensitive-key detection and masking for safe logging: is_sensitive_key, mask, and recursive map_of. Pure - no capabilities.
 - [`redis`](./packages/redis.md) - A Redis client (RESP2) written in Ecko, over std.net raw sockets + TLS.
+- [`semver`](./packages/semver.md) - Semantic Versioning 2.0.0: parse, compare, sort and match version ranges. Pure - no capabilities.
 - [`smtp`](./packages/smtp.md) - An SMTP client (RFC 5321) written in Ecko, over std.net raw sockets + STARTTLS.
 - [`stats`](./packages/stats.md) - Descriptive statistics for Ecko: mean, median, mode, variance, stdev, quantiles. Pure - no capabilities.
 - [`struct`](./packages/struct.md) - Pack and unpack binary data with a struct-style format string, over the bytes type. Pure - no capabilities.

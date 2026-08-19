@@ -66,3 +66,27 @@ Two consequences worth internalizing:
 ## Restrictions
 
 Cannot combine with [voting](./voting.md) or [`-> stream`](./streaming.md).
+
+## A tool set built at runtime
+
+`using [weather, docs]` names functions written in the source. When the tools
+are not known until the program runs - discovered from an MCP server, read from
+config, built in a loop - the `using` expression is evaluated instead, and each
+element may be a **tool spec**:
+
+```ecko
+answer = ai "what changed?" using mcp.as_tools(session)
+```
+
+```ecko
+{ name: "search", description: "Search the docs", params: ["query"], call: fn(args) ... }
+```
+
+`name`, `description` and `call` are required; `params` defaults to `[]`.
+
+A value created while the program runs cannot carry a `@tool` annotation, which
+is applied at parse time, and has no identifier to be named after. So it carries
+its own name and description, or there is nothing to describe it to the model
+with.
+
+The two forms mix in one list.

@@ -12,7 +12,7 @@ import webkit
 
 Declares `fs:read` and `net`. A capability is only advisory in the manifest: what the package actually gets is the `grant` you give it when you import it.
 
-Version 0.10.0 - [source](https://github.com/ecko-lang/webkit) - MIT.
+Version 0.10.1 - [source](https://github.com/ecko-lang/webkit) - MIT.
 
 ---
 

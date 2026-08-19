@@ -8,9 +8,9 @@ Around 95 functions are always in scope, with no import.
 `window`, `unique`, `reverse`, `sort`, `sort_by`, `sort_with`, `group_by`,
 `partition`, `frequencies`, `select`.
 
-**Access:** `first`, `last`, `take`, `drop`, `slice`, `get`, `len`, `contains`,
-`index_of`, `find`, `count`, `any`, `all`, `sum`, `min`, `max`, `empty_map`,
-`keys`, `values`.
+**Access:** `first`, `last`, `take`, `drop`, `slice`, `get`, `has`, `len`,
+`contains`, `index_of`, `find`, `count`, `any`, `all`, `sum`, `min`, `max`,
+`empty_map`, `keys`, `values`.
 
 **Build:** `push`, `pop`, `set`, `insert`, `remove`, `range`, `list`.
 
@@ -22,6 +22,9 @@ Three of those are easy to mix up:
 - `drop(list, n)` is the complement of `take`, so `take(n) + drop(n)` rebuilds the
   input. `slice(list, start, end)` is the half-open range, with out-of-range
   bounds clamped rather than raised.
+- `has(map, key)` asks whether the key exists, which is not the same question as
+  `get(map, key) == null` - a key can be present and hold null. It works on
+  structs too, and refuses anything else rather than answering `false`.
 - `sort_by` takes a **key**; `sort_with` takes a **comparator** returning a
   negative number, zero or a positive one. Reach for `sort_with` when the order
   cannot be reduced to a key - a comparison whose answer depends on the operands'
@@ -45,7 +48,12 @@ The full toolkit is [`std.string`](./string.md).
 ## Numbers and conversion
 
 `int`, `float`, `decimal`, `bool`, `string`, `bytes`, `abs`, `floor`, `ceil`,
-`round`, `pow`, `sqrt`, `min`, `max`, `sum`, `approx`, `type_of`, `is_null`.
+`round`, `pow`, `sqrt`, `min`, `max`, `sum`, `approx`, `type_of`, `is_null`,
+`is_map`, `is_list`, `is_string`, `is_number`.
+
+The predicates read better than `type_of(x) == "map"` in a condition that
+already has two other clauses, which is most conditions in code that walks JSON.
+`is_number` is true for `Int`, `Float` and `Decimal`.
 
 `approx(a, b, eps?)` is tolerance comparison for floats - `==` on floats is exact
 IEEE. See [Numbers](../language/numbers.md).

@@ -14,7 +14,7 @@ import smtp
 
 Declares `net`. A capability is only advisory in the manifest: what the package actually gets is the `grant` you give it when you import it.
 
-Version 0.9.5 - [source](https://github.com/ecko-lang/smtp-client) - MIT.
+Version 0.10.1 - [source](https://github.com/ecko-lang/smtp-client) - MIT.
 
 ---
 
@@ -43,6 +43,10 @@ build_message(msg) -> RFC 5322 text (CRLF line endings): From / To /
 Subject [/ Date] / extra headers (sorted by name) / MIME headers, a blank
 line, then the body. msg: { from, to (string|list), subject, body,
 date?, headers? }.
+
+A header supplied in `headers` wins over the default this would otherwise
+add, so a caller sending a multipart body (see the `mime` package) can set
+its own Content-Type without ending up with two of them.
 
 ## `read_reply(sock)`
 

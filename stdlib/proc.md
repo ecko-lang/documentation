@@ -30,6 +30,28 @@ the group. The whole tree goes.
 **Unix only.** Windows has no process groups in this sense - the equivalent is a
 Job Object - so `kill` there reaps the direct child and grandchildren survive.
 
+## Driving a long-lived child
+
+`run` waits for the child to exit, so it can do everything with one except talk
+to it. A language server, or an MCP server over stdio, is the other shape: write
+a request, read the answer, repeat.
+
+```ecko
+p = proc.spawn("mcp-server", [])
+proc.write(p, request + "\n")
+reply = proc.read_line(p, 5000)
+proc.close_stdin(p)
+```
+
+**`spawn` opens stdin; `run` deliberately does not.** A child reading a pipe
+nobody will ever write to blocks forever, and `run` gives you no opportunity to
+write, so it hands the child a closed stdin rather than a hang. `write` on a
+handle that has no stdin is an error, not a silent no-op.
+
+**Close stdin when there is nothing more to send.** A child reading until end of
+input never reaches it while the pipe is open, so `close_stdin` is how to say
+"that is all" without killing the process.
+
 ## Capability
 
 Needs **`exec`**. Spawning a program and signalling its process group is process
@@ -45,6 +67,9 @@ control, the same authority `os.exec` and `os.exit` need. See
 | `proc.pid(handle)` | The child's pid, which is also its process-group id. |
 | `proc.wait(handle, timeout_ms?)` | A result map, or `null` if still running. |
 | `proc.kill(handle, signal?)` | Signals the group. Default `"term"`; also `"kill"`, `"int"`, `"hup"`. |
+| `proc.write(handle, text)` | Write to a spawned child's stdin. Returns the bytes written. |
+| `proc.read_line(handle, timeout_ms?)` | One line of its stdout, or `null`. Default 30000 ms. |
+| `proc.close_stdin(handle)` | Let the child see end of input. |
 
 `opts` is `{ timeout_ms: 5000 }`. Left out, `run` waits as long as it takes.
 
@@ -64,3 +89,13 @@ supervisor loop can check without committing to block.
 **Output is drained continuously**, not read after the wait. A child that fills
 the 64 KiB pipe buffer blocks on write, so reading late would hang rather than
 time out.
+
+**`read_line` returns `null` for two different things** - the deadline passed,
+or the child closed stdout - so a loop reading until `null` terminates either
+way. `proc.wait` tells them apart when the difference matters.
+
+**A line is returned without its terminator**, including the `\r` of a CRLF, and
+a final line with no newline at all is handed over rather than dropped.
+
+**Every `write` is flushed.** A child reading a line at a time would otherwise
+get nothing until the buffer happened to fill, which reads as a hang.

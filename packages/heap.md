@@ -12,7 +12,7 @@ import heap
 
 Pure computation: it declares no capabilities, so it cannot touch the network, the filesystem or the environment.
 
-Version 0.9.5 - [source](https://github.com/ecko-lang/heap) - MIT.
+Version 0.10.1 - [source](https://github.com/ecko-lang/heap) - MIT.
 
 ---
 
