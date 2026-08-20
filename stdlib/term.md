@@ -10,9 +10,12 @@ print(term.size())          # { rows, cols }
 key = term.read_key()       # a single keypress
 ```
 
-Every function returns a string (or, for control sequences, `""` when output is
-not a terminal) rather than writing to the terminal directly, so a whole frame
-can be built and printed in one go - flicker-free.
+Colour, attribute, cursor-movement, clearing and link functions all return a
+string (or, for control sequences, `""` when output is not a terminal) rather
+than writing to the terminal directly, so a whole frame can be built and
+printed in one go - flicker-free. The rest have their own types: `size`
+returns a map, `is_tty`, `poll` and `raw_mode` return booleans, `width` returns
+an integer, and `read_key` returns a string or `null`.
 
 ## Colour
 
@@ -100,17 +103,37 @@ leaving the original scrollback untouched.
 
 `term.size()` reports the terminal as `{ rows, cols }`. It has a sensible 80x24
 fallback when there is no terminal, so code that uses it still works under a
-pipe. `term.width(s)` is unrelated - it is the display width of a string once
-ANSI codes are stripped, for aligning coloured output.
+pipe.
+
+`term.width(s)` is unrelated to the terminal's size: it strips ANSI codes and
+returns the **Unicode character count** of what is left, as an integer - not
+the actual display width. Wide characters (CJK, many emoji) occupy two
+terminal columns each but count as one here, and combining characters (accents
+stored as separate codepoints) count as extra characters that occupy no column
+at all. Both throw off alignment that assumes 1 character = 1 column. For
+correct display-width padding, use the [`tui` package](../packages/tui.md)
+rather than this function.
 
 ## Key input
 
 `term.read_key()` reads a single keypress without waiting for Enter, blocking
-until one arrives (or a passed timeout expires). That is what makes a menu or a
-prompt possible. `term.poll()` checks whether a key is waiting without blocking,
-and `term.raw_mode(true)` / `term.raw_mode(false)` toggle raw input mode
-(no line buffering, no local echo) - always paired, and restored automatically
-on exit even if the program errors.
+until one arrives, and returns `null` if a passed timeout expires (or stdin
+hits EOF) with no key read. That is what makes a menu or a prompt possible.
+`term.poll()` checks whether a key is waiting without blocking, returning a
+boolean, and `term.raw_mode(true)` / `term.raw_mode(false)` toggle raw input
+mode (no line buffering, no local echo). Both return a boolean too: `false`
+when stdin is not a terminal (a harmless no-op, so a piped run stays
+pipeline-friendly), `true` otherwise. Always pair `raw_mode(true)` with
+`raw_mode(false)` - it is also restored automatically on exit even if the
+program errors.
+
+**Unix only, for now.** `read_key`, `poll` and `raw_mode` are implemented on
+top of `termios`, which does not exist on Windows. On any non-Unix
+platform - including the shipped Windows x86-64 build - all three raise an
+error saying keyboard input needs a Unix terminal, rather than silently doing
+nothing. A key-input UI built on this module does not yet run cross-platform;
+the rest of the module is otherwise portable (colour, styling, cursor control
+and `size`/`is_tty` all work on Windows too).
 
 ## Building a UI
 
