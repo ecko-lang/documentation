@@ -2,7 +2,7 @@
 
 Embedded SQLite, compiled into the binary. Nothing to install.
 
-```ecko
+```ecko fragment
 import std.sql
 
 db = sql.open("app.db")             # or ":memory:"
@@ -26,7 +26,7 @@ scoped grant confines which databases a package can open).
 
 ## Always use parameters
 
-```ecko
+```ecko fragment
 sql.query(db, "select * from users where name = ?", [name])   # correct
 sql.query(db, "select * from users where name = '{name}'")    # injection
 ```
@@ -40,7 +40,7 @@ is never parsed as SQL, whatever it contains.
 `query` returns a list of maps keyed by column name. `query_one` returns the first
 row, or `null` - so it is one of the nullable lookups, and absence is expected:
 
-```ecko
+```ecko fragment
 row = sql.query_one(db, "select * from users where id = ?", [id])
 if row == null { return not_found() }
 ```
@@ -48,9 +48,10 @@ if row == null { return not_found() }
 ## Transactions
 
 `sql.transaction(db, fn)` commits when the function returns and **rolls back if it
-raises**. That is the whole reason to use it rather than issuing `begin` and
-`commit` yourself: an error between the two would otherwise leave the transaction
-open.
+raises**. That is the whole reason to use it rather than issuing `sql.begin(db)`,
+`sql.commit(db)` and `sql.rollback(db)` yourself: an error between `begin` and
+`commit` would otherwise leave the transaction open. Reach for the manual calls
+only when the boundary does not line up with a single function.
 
 ## `sql { ... }` blocks
 
@@ -72,7 +73,7 @@ write-heavy multi-process work, it is the wrong shape - use
 Failures raise `{ kind: "sql", message }` - constraint violations included, which is
 often the useful signal:
 
-```ecko
+```ecko fragment
 try { sql.exec(db, "insert into users (email) values (?)", [e]) }
 catch (err) { match get(err, "kind") { "sql" => already_taken() _ => error(err) } }
 ```

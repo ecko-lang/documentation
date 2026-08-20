@@ -6,7 +6,7 @@ A session holds conversation history, so multi-turn calls remember prior turns.
 chat = session()
 
 ai "My name is Ada." with chat
-who = ai "What is my name?" with chat     # sees the earlier turn
+who = ai "What is my name?" with chat  # sees the earlier turn
 ```
 
 ## What `with` does
@@ -21,14 +21,14 @@ what every provider's API expects and what keeps a long conversation coherent.
 
 ## A session is a cell
 
-```ecko
+```ecko fragment
 cell_get(chat)     # [{ role: "user", content: "..." }, { role: "assistant", ... }]
 ```
 
 It is a [`cell`](../concurrency/cell.md) of `{ role, content }` maps, so you can
 read it, log it, persist it, or trim it:
 
-```ecko
+```ecko fragment
 # keep only the last 20 turns
 cell_update(chat, fn(msgs) if len(msgs) > 20 { msgs[-20..] } else { msgs })
 ```
@@ -48,7 +48,7 @@ matters. The two usual strategies:
 
 Check the size before spending with [`tokens`](./budgeting.md):
 
-```ecko
+```ecko fragment
 if tokens(json_encode(cell_get(chat))) > 50000 { chat = compact(chat) }
 ```
 

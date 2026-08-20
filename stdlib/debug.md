@@ -1,6 +1,6 @@
 # `std.debug`
 
-```ecko
+```ecko fragment
 import std.debug
 
 debug.inspect(value)        # a readable rendering of any value
@@ -26,7 +26,7 @@ in scope.
 
 ## Timers
 
-```ecko
+```ecko fragment
 debug.timer("query")
 rows = sql.query(db, "select * from big")
 print("took {debug.elapsed('query')}ms")

@@ -2,7 +2,7 @@
 
 A router over [`http.serve`](./http.md).
 
-```ecko
+```ecko fragment
 import std.http
 import std.web
 
@@ -16,11 +16,27 @@ routes = [
 http.serve(8080, web.router(routes, middleware))
 ```
 
+## Route constructors
+
+The map literal above is one way to write a route. `web.get(path, handler)`,
+`web.post(path, handler)`, `web.put(path, handler)`, `web.patch(path, handler)`,
+`web.delete(path, handler)` and `web.head(path, handler)` build the same map -
+pick whichever reads better:
+
+```ecko fragment
+routes = [
+    web.get("/", fn(req) http.html(home())),
+    web.get("/posts/:id", fn(req) show(req.params.id)),
+    web.post("/posts", create),
+    web.static("/assets", "public/assets"),
+]
+```
+
 ## Path parameters
 
 `:name` segments arrive in `req.params`:
 
-```ecko
+```ecko fragment
 fn show(req) {
     id = req.params.id
     http.json(find(id))
@@ -40,7 +56,7 @@ looks broken while working perfectly for browsers.
 A middleware is `fn(req, next)`. It can inspect the request, call `next(req)`, and
 modify the response:
 
-```ecko
+```ecko fragment
 fn timing(req, next) {
     start = time.monotonic()
     resp = next(req)
@@ -54,7 +70,7 @@ which is how authentication and a preflight response work.
 
 ## Static files
 
-```ecko
+```ecko fragment
 web.static("/assets", "public/assets")
 ```
 

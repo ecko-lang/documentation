@@ -2,7 +2,7 @@
 
 WebSocket client.
 
-```ecko
+```ecko fragment
 import std.ws
 
 conn = ws.connect("wss://example.com/socket")
@@ -18,7 +18,7 @@ Needs `net`.
 `recv` blocks until a message arrives, and returns `null` when the connection
 closes. So the idiomatic loop ends on close:
 
-```ecko
+```ecko fragment
 loop {
     msg = ws.recv(conn)
     if msg == null { break }

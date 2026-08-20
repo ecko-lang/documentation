@@ -1,13 +1,13 @@
 # Variables & mutability
 
 ```ecko
-name = "Ecko"       # bare assignment: a mutable binding
-name = "Echo"       # so reassignment is fine
+name = "Ecko"  # bare assignment: a mutable binding
+name = "Echo"  # so reassignment is fine
 
-mut count = 0       # explicitly mutable
+mut count = 0  # explicitly mutable
 count = count + 1
 
-let ratio = 3.14    # immutable
+let ratio = 3.14  # immutable
 # ratio = 1.0       # error: cannot reassign immutable variable
 ```
 
@@ -29,7 +29,7 @@ everything.
 
 ## Function bindings are immutable
 
-```ecko
+```ecko fragment
 fn f() = 1
 f = 2               # error
 let f = fn() 2      # legal: an explicit redeclaration
@@ -39,7 +39,7 @@ Same for built-ins - except that assigning to a built-in name **shadows** it wit
 a new binding in the current scope rather than erroring:
 
 ```ecko
-sum = 0             # fine anywhere; the builtin `sum` is untouched here
+sum = 0  # fine anywhere; the builtin `sum` is untouched here
 ```
 
 `ecko check` warns when you shadow a built-in, because it is usually accidental.
@@ -73,7 +73,7 @@ A closure running in [`pmap`](../concurrency/pmap.md), an
 [async task](../concurrency/async.md) or an HTTP handler gets a **snapshot** of
 captured variables. Mutating a captured `mut` changes only that worker's copy:
 
-```ecko
+```ecko fragment
 mut count = 0
 pmap(items, fn(i) { count = count + 1 })
 print(count)        # still 0

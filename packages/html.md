@@ -6,7 +6,7 @@ A tolerant HTML parser for Ecko: parse to a node tree, extract text, and find el
 ecko get github.com/ecko-lang/html
 ```
 
-```ecko
+```ecko fragment
 import html
 ```
 

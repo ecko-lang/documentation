@@ -6,7 +6,7 @@ Model Context Protocol, both directions: call an MCP server's tools over stdio o
 ecko get github.com/ecko-lang/mcp
 ```
 
-```ecko
+```ecko fragment
 import mcp
 ```
 

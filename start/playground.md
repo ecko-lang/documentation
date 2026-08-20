@@ -7,7 +7,7 @@ runs the real kernel, compiled to WebAssembly, entirely client-side.
 # This runs exactly the same in the playground as it does on your machine,
 # in mock mode
 count = ai[Int] "Count the words in this sentence"
-print(count)   # 42
+print(count)  # 42
 ```
 
 The page fetches one WebAssembly module and runs your program in place -

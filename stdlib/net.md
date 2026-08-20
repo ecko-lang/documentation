@@ -2,7 +2,7 @@
 
 Raw TCP and TLS sockets. Needs `net`.
 
-```ecko
+```ecko fragment
 import std.net
 
 c = net.connect("example.com", 80)
@@ -30,6 +30,12 @@ responses. This is the classic source of protocol bugs.
 Use `recv_exact` for a length-prefixed protocol and `recv_until` for a
 line-delimited one - those two cover almost everything, and both handle the framing
 you would otherwise get wrong.
+
+## `lookup`
+
+`net.lookup(host)` resolves a hostname to a list of IP address strings via the
+OS resolver - the same lookup `connect` does internally, exposed on its own for
+when you want the address without opening a socket.
 
 ## `starttls`
 

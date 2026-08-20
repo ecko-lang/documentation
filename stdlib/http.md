@@ -4,7 +4,7 @@ Client and server in one module.
 
 ## Client
 
-```ecko
+```ecko fragment
 import std.http
 
 r = http.get(url)
@@ -16,9 +16,13 @@ http.post(url, body, headers)
 data = http.get(url).body_bytes        # bytes, for binary
 ```
 
+`http.put(url, opts)`, `http.patch(url, opts)` and `http.delete(url, opts)`
+cover the rest of the verbs. `opts` is the same options map every client call
+takes: `body`, `json`, `headers`, `timeout`, `stream`.
+
 ## Server
 
-```ecko
+```ecko fragment
 fn handler(req) {
     if req.path == "/" { http.text("hello") } else { http.not_found() }
 }
@@ -27,10 +31,12 @@ http.serve(8080, handler)
 ```
 
 `serve` blocks. A handler takes a request map and returns a response.
+`http.stop()` requests a graceful shutdown from elsewhere - in-flight requests
+drain, then `serve` returns. Ctrl-C does the same thing.
 
 ## Responses
 
-```ecko
+```ecko fragment
 http.text(s)
 http.html(body)
 http.json(value)
@@ -51,7 +57,7 @@ gives uploads with `filename` and `content_type`.
 `serve` takes one handler. For routes, `:params`, middleware and static files, use
 [`std.web`](./web.md), which is a router over this:
 
-```ecko
+```ecko fragment
 import std.web
 http.serve(8080, web.router(routes))
 ```
@@ -63,7 +69,7 @@ gets a **snapshot** of captured state - the usual
 [share-nothing](../concurrency/pmap.md) model. To share across requests, use a
 [`cell`](../concurrency/cell.md):
 
-```ecko
+```ecko fragment
 hits = cell(0)
 fn handler(req) {
     n = cell_update(hits, fn(v) v + 1)
@@ -118,6 +124,6 @@ statically, so there is nothing to install.
 Client failures raise `{ kind: "net", url, message }`. Wrap calls to anything you do
 not control, and consider [`retry`](../ai/retry.md) for transient failure:
 
-```ecko
+```ecko fragment
 body = retry(3, fn() http.get(url).body)
 ```

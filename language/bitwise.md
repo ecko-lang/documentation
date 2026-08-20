@@ -3,7 +3,7 @@
 The bitwise operators are **words**, because `|` belongs to
 [pipelines](./pipelines.md) and lambdas.
 
-```ecko
+```ecko fragment
 a band b        # AND
 a bor b         # OR
 a bxor b        # XOR
@@ -26,7 +26,7 @@ real bugs. `shr` is arithmetic, so it sign-extends.
 `band`, `bor` and `bxor` are element-wise and **require equal lengths**. `bnot`
 complements each byte. Shifts do not apply.
 
-```ecko
+```ecko fragment
 key = b"\x5a\x5a\x5a\x5a"
 masked = message bxor key
 original = masked bxor key
@@ -38,7 +38,7 @@ Mixing `int` and `bytes` operands is a type error.
 
 Between comparison and range - **looser than arithmetic**:
 
-```ecko
+```ecko fragment
 a + b shl 2        # means (a + b) shl 2
 ```
 

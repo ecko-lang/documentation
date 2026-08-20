@@ -2,7 +2,7 @@
 
 Run a child process, with a timeout that reaps everything it started.
 
-```ecko
+```ecko fragment
 import std.proc
 
 r = proc.run("ffmpeg", ["-i", "in.mp4", "out.mp4"], { timeout_ms: 5000 })
@@ -36,7 +36,7 @@ Job Object - so `kill` there reaps the direct child and grandchildren survive.
 to it. A language server, or an MCP server over stdio, is the other shape: write
 a request, read the answer, repeat.
 
-```ecko
+```ecko fragment
 p = proc.spawn("mcp-server", [])
 proc.write(p, request + "\n")
 reply = proc.read_line(p, 5000)

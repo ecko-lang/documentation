@@ -6,7 +6,7 @@ Command-line argument parsing for Ecko: typed flags, options, positionals, defau
 ecko get github.com/ecko-lang/cli
 ```
 
-```ecko
+```ecko fragment
 import cli
 ```
 
@@ -22,7 +22,7 @@ Version 0.10.1 - [source](https://github.com/ecko-lang/cli) - MIT.
 Start a command-line spec. Build it up with `flag`, `opt` and `arg`, then
 hand it to `parse`.
 
-```ecko
+```ecko fragment
 spec = parser("greet", "say hello")
 ```
 
@@ -30,7 +30,7 @@ spec = parser("greet", "say hello")
 
 Add a boolean flag: present on the command line means true.
 
-```ecko
+```ecko fragment
 spec = flag(spec, "verbose", "print more")
 ```
 

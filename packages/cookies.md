@@ -6,7 +6,7 @@ Parse and serialize HTTP cookies for client sessions: read Set-Cookie headers in
 ecko get github.com/ecko-lang/cookies
 ```
 
-```ecko
+```ecko fragment
 import cookies
 ```
 

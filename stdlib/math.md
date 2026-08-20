@@ -5,10 +5,10 @@ Constants and floating-point functions.
 ```ecko
 import std.math
 
-math.pi                      # 3.141592653589793
-math.sqrt(2)                 # 1.4142135623730951
-math.clamp(15, 0, 10)        # 10
-math.isclose(0.1 + 0.2, 0.3) # true
+math.pi  # 3.141592653589793
+math.sqrt(2)  # 1.4142135623730951
+math.clamp(15, 0, 10)  # 10
+math.isclose(0.1 + 0.2, 0.3)  # true
 ```
 
 ## Constants
@@ -47,7 +47,7 @@ comparison.
 
 ## Float comparison
 
-```ecko
+```ecko fragment
 0.1 + 0.2 == 0.3            # false - exact IEEE equality
 math.isclose(0.1 + 0.2, 0.3) # true
 approx(0.1 + 0.2, 0.3)       # true - the global, same idea

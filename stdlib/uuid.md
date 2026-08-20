@@ -3,8 +3,8 @@
 ```ecko
 import std.uuid
 
-uuid.v4()      # "e3b0c442-98fc-1c14-9afb-4c8996fb9242"  random
-uuid.v7()      # time-ordered
+uuid.v4()  # "e3b0c442-98fc-1c14-9afb-4c8996fb9242"  random
+uuid.v7()  # time-ordered
 ```
 
 ## Which to use
@@ -32,7 +32,7 @@ For a session token, a password-reset link or an API key, use
 
 ```ecko
 import std.random
-token = random.token(32)      # url-safe, from OS entropy
+token = random.token(32)  # url-safe, from OS entropy
 ```
 
 That draws from the CSPRNG and is not affected by `random.seed`, which is the

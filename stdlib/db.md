@@ -2,7 +2,7 @@
 
 An in-process vector store, for semantic search and retrieval.
 
-```ecko
+```ecko fragment
 import std.db
 
 db.add("doc1", "The moon is made of rock.")

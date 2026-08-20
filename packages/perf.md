@@ -6,7 +6,7 @@ Measure the performance of your own Ecko code: time, measure, and bench (best-of
 ecko get github.com/ecko-lang/perf
 ```
 
-```ecko
+```ecko fragment
 import perf
 ```
 

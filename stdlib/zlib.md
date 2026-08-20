@@ -2,7 +2,7 @@
 
 Compression over [bytes](../language/bytes.md).
 
-```ecko
+```ecko fragment
 import std.zlib
 
 packed = zlib.gzip(data)
@@ -27,7 +27,7 @@ If you are unsure, use gzip.
 
 Both directions work on bytes. Compress a string by encoding it first:
 
-```ecko
+```ecko fragment
 packed = zlib.gzip(bytes(text))
 text   = string(zlib.gunzip(packed))
 ```
@@ -47,7 +47,7 @@ produce something marginally larger.
 Corrupt or truncated input raises rather than returning partial output. Catch it
 when the data came from outside:
 
-```ecko
+```ecko fragment
 try { data = zlib.gunzip(body) } catch (e) { reject("bad encoding") }
 ```
 

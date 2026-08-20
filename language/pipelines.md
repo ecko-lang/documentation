@@ -2,7 +2,7 @@
 
 `|>` feeds the value on the left into the call on the right.
 
-```ecko
+```ecko fragment
 result = data
     |> filter(pred)
     |> map(transform)
@@ -18,7 +18,7 @@ is adding a line rather than finding the right nesting depth.
 `|>` has the lowest precedence of any operator, so a pipeline stage can contain
 arithmetic, comparison and boolean logic without parentheses:
 
-```ecko
+```ecko fragment
 xs |> filter(fn(x) x > 2 and x < 10) |> len()
 ```
 
@@ -30,7 +30,7 @@ multi-line form above needs no continuation marker.
 This is where pipelines and the language's purpose meet. The piped value becomes
 the prompt input:
 
-```ecko
+```ecko fragment
 dates = text
     |> ai "Extract all dates"
     |> ai "Format as ISO 8601"
@@ -39,7 +39,7 @@ dates = text
 Each stage is a model call whose input is the previous stage's output. The same
 shape works with types, so a pipeline can narrow from text to structure:
 
-```ecko
+```ecko fragment
 report = raw_email
     |> ai "Extract the complaint"
     |> ai[Severity] "How severe is this?"
@@ -54,7 +54,7 @@ arbitrary functions pipeable.
 
 For a function whose subject is not first, use a lambda:
 
-```ecko
+```ecko fragment
 value |> fn(v) other(config, v)
 ```
 
@@ -62,7 +62,7 @@ value |> fn(v) other(config, v)
 
 Swap `map` for [`pmap`](../concurrency/pmap.md) and the stage runs in parallel:
 
-```ecko
+```ecko fragment
 summaries = docs
     |> pmap(fn(d) ai "Summarize: {d}")
     |> filter(fn(s) len(s) > 0)

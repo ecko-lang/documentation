@@ -8,7 +8,7 @@ answer = ai "What is the capital of France?"
 
 An untyped call returns text. The interesting form asks for a type:
 
-```ecko
+```ecko fragment
 count = ai[Int] "How many words in: {text}"
 print(count + 1)              # arithmetic, not string concatenation
 ```
@@ -20,7 +20,7 @@ retries with the failure fed back before it gives up.
 
 ## The types you can ask for
 
-```ecko
+```ecko fragment
 ai[Int] "how many?"
 ai[Float] "what fraction?"
 ai[Bool] "is this spam?"
@@ -56,7 +56,7 @@ place - and the type is checked before your next line runs.
 
 `ai` composes with `|>`, which feeds the left value in as prompt input:
 
-```ecko
+```ecko fragment
 dates = text
     |> ai "Extract all dates"
     |> ai "Format as ISO 8601"

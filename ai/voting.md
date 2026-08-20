@@ -1,6 +1,6 @@
 # Majority voting
 
-```ecko
+```ecko fragment
 best = ai[Sentiment] 5 "classify this review: {text}"
 ```
 

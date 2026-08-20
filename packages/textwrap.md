@@ -6,7 +6,7 @@ Wrap, fill, indent, dedent, and shorten text for Ecko - prompt building and term
 ecko get github.com/ecko-lang/textwrap
 ```
 
-```ecko
+```ecko fragment
 import textwrap
 ```
 

@@ -3,13 +3,15 @@
 ```ecko
 story = ai "Write a short story" -> stream
 
-for chunk in story { print_no_newline(chunk) }   # incrementally
+for chunk in story {
+    print_no_newline(chunk)  # incrementally
+}
 ```
 
 The call runs in the background and returns a stream. Consume it chunk by chunk,
 or use it as a value to block for the whole result:
 
-```ecko
+```ecko fragment
 full = string(story)
 ```
 

@@ -2,7 +2,7 @@
 
 Give a model functions it can call.
 
-```ecko
+```ecko fragment
 @tool("look up the current weather for a city")
 fn weather(city) = http.get("https://api.example/w?q={city}").body
 
@@ -74,11 +74,11 @@ are not known until the program runs - discovered from an MCP server, read from
 config, built in a loop - the `using` expression is evaluated instead, and each
 element may be a **tool spec**:
 
-```ecko
+```ecko fragment
 answer = ai "what changed?" using mcp.as_tools(session)
 ```
 
-```ecko
+```ecko fragment
 { name: "search", description: "Search the docs", params: ["query"], call: fn(args) ... }
 ```
 

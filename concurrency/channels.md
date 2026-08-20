@@ -3,7 +3,7 @@
 A channel carries values between tasks. Where [`await`](./async.md) is fork-join,
 a channel is a pipeline.
 
-```ecko
+```ecko fragment
 jobs = channel()
 
 async fn produce() {
@@ -34,7 +34,7 @@ buffer is full, so a fast producer is throttled by a slow consumer instead of
 growing a queue until memory runs out.
 
 ```ecko
-work = channel(10)      # at most 10 items in flight
+work = channel(10)  # at most 10 items in flight
 ```
 
 An unbounded channel is a memory leak waiting for a load spike. Reach for the
@@ -54,7 +54,7 @@ Close in the producer, and close it once.
 
 ## `select` for fan-in
 
-```ecko
+```ecko fragment
 v = select([results, errors])
 ```
 
@@ -62,7 +62,7 @@ Blocks until one channel has a value; the earlier channel wins when several are
 ready, and only the winner is consumed. It does not tell you which channel
 produced the value, so tag values before sending if you need to know:
 
-```ecko
+```ecko fragment
 send(results, { from: "worker-1", value: v })
 ```
 
@@ -75,7 +75,7 @@ treating `null` as an end marker.
 
 ## A worked pipeline
 
-```ecko
+```ecko fragment
 raw = channel(100)
 done = channel(100)
 

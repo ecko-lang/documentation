@@ -4,8 +4,8 @@
 hold.
 
 ```ecko
-magic = b"\x89PNG\r\n\x1a\n"     # 8 bytes
-empty = b""                        # falsy, like "" and []
+magic = b"\x89PNG\r\n\x1a\n"  # 8 bytes
+empty = b""  # falsy, like "" and []
 ```
 
 ## The literal
@@ -33,7 +33,7 @@ and never `\0`, so a following digit cannot blur into the escape.
 
 ## The text boundary is explicit
 
-```ecko
+```ecko fragment
 bytes(s)                     # string -> bytes: UTF-8 encode (always works)
 bytes([137, 80, 78])         # list of Ints 0..255 -> bytes
 string(b)                    # bytes -> string: ERRORS on invalid UTF-8
@@ -63,7 +63,7 @@ returns a deterministic blob through the same coercion path.
 `band`, `bor` and `bxor` work element-wise on equal-length bytes; `bnot`
 complements each byte. See [Bitwise & word operators](./bitwise.md).
 
-```ecko
+```ecko fragment
 key = b"\x5a\x5a\x5a\x5a"
 masked = message bxor key
 original = masked bxor key

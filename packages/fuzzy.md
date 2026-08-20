@@ -6,7 +6,7 @@ String similarity: Levenshtein, Jaro-Winkler, Dice and Jaccard, plus best-match 
 ecko get github.com/ecko-lang/fuzzy
 ```
 
-```ecko
+```ecko fragment
 import fuzzy
 ```
 

@@ -18,7 +18,9 @@ print(count)
 
 # Pipe data through LLM calls
 text = "Meet me on 12 March and again on 4 April."
-dates = text |> ai "Extract all dates" |> ai "Format as ISO 8601"
+dates = text
+    |> ai "Extract all dates"
+    |> ai "Format as ISO 8601"
 print(dates)
 ```
 
@@ -87,7 +89,7 @@ ecko                       # start the REPL (or `ecko repl`)
 Your first program is one line:
 
 ```ecko
-print("Hello, AI World!")   # Hello, AI World!
+print("Hello, AI World!")  # Hello, AI World!
 ```
 
 And the `ai` keyword needs no setup - it runs in mock mode until you add a key:
@@ -95,7 +97,7 @@ And the `ai` keyword needs no setup - it runs in mock mode until you add a key:
 ```ecko
 # Typed output; runs offline in mock mode (a real key returns a real answer)
 count = ai[Int] "Count the words in this sentence"
-print(count)   # 42
+print(count)  # 42
 ```
 
 Set `ECKO_API_KEY` for real responses, and `ECKO_AI_PROVIDER` to switch between
@@ -150,6 +152,7 @@ runtime's architecture.
 - [Secrets](./language/secrets.md) - `secret(v)`, `reveal(v)`, `is_secret(v)`, structural redaction
 - [Modules & imports](./language/modules.md) - `import std.*`, `import "./util"`, the `export` modifier (private by default), re-export (`export * from`, `export import`), circular-import detection
 - [Resource limits](./language/limits.md) - recursion, parse depth, step budgets; adversarial input degrades to a catchable error
+- [Migrating off deprecated syntax](./language/migration.md) - `ecko fix --migrate`, `const` -> `let`, pipe lambdas -> `fn(params) body`
 
 ## The `ai` keyword
 
@@ -175,7 +178,7 @@ runtime's architecture.
 - [Async tasks](./concurrency/async.md) - `async fn` / `await`, spawning tasks, error propagation, `cancel`
 - [Channels](./concurrency/channels.md) - `channel` (bounded/unbounded), `send`, `recv`, `try_recv`, `close`, `select`
 - [Streaming responses & SSE](./concurrency/streaming.md) - HTTP handlers that stream from a channel
-- [Background tasks](./concurrency/background.md) - `std.bg`: `spawn`, `status`, `result`, `after`, `every`, `join_all`
+- [Background tasks](./concurrency/background.md) - `std.bg`: `spawn`, `status`, `result`, `after`, `every`, `join_all` ([function reference](./stdlib/bg.md))
 
 ## Standard library
 

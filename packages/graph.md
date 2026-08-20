@@ -6,7 +6,7 @@ Adjacency-list graphs: build, traverse, and answer reachability and path questio
 ecko get github.com/ecko-lang/graph
 ```
 
-```ecko
+```ecko fragment
 import graph
 ```
 

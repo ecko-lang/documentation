@@ -1,6 +1,6 @@
 # `std.toml`
 
-```ecko
+```ecko fragment
 import std.toml
 
 config = toml.parse(text)

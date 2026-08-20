@@ -5,7 +5,7 @@ Files and directories. Gated on `fs:read` and `fs:write` for
 capabilities take an optional path scope (`fs:write:./logs`), so a package can be
 confined to one directory.
 
-```ecko
+```ecko fragment
 import std.fs
 
 fs.read("notes.txt")            # string
@@ -44,7 +44,7 @@ the code works on Windows too.
 `is_dir`. `glob` takes a pattern with `*` and `**`, and `fs.match(pattern, path)`
 tests one path against a pattern.
 
-```ecko
+```ecko fragment
 for entry in fs.walk("src") {
     if not entry.is_dir and fs.extension(entry.path) == "ecko" { check(entry.path) }
 }
@@ -52,7 +52,7 @@ for entry in fs.walk("src") {
 
 ## Temporary files
 
-```ecko
+```ecko fragment
 dir = fs.temp_dir()
 f = fs.temp_file()
 ```
@@ -69,7 +69,7 @@ Everything raises `{ kind: "fs", path, message }` on failure. The `path` field i
 there so a handler can report *which* file, which is the thing you always want and
 often lose:
 
-```ecko
+```ecko fragment
 try { data = fs.read(p) } catch (e) {
     match get(e, "kind") { "fs" => print("cannot read {e.path}") _ => error(e) }
 }

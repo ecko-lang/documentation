@@ -6,7 +6,7 @@ SaaS web-app batteries for Ecko: auto-escaping HTML templates, signed cookies, s
 ecko get github.com/ecko-lang/webkit
 ```
 
-```ecko
+```ecko fragment
 import webkit
 ```
 
@@ -36,7 +36,7 @@ encoding.
 
 e(s) -> the same as `escape`, named short for use inside templates.
 
-```ecko
+```ecko fragment
 html("<p>Hello, {e(name)}</p>")
 ```
 
@@ -65,7 +65,7 @@ cookie(name, value, opts) -> a Set-Cookie header string.
 and `same_site` ("Strict", "Lax" or "None"). Nothing is set by default, so
 for a session cookie pass `http_only` and, over HTTPS, `secure`.
 
-```ecko
+```ecko fragment
 cookie("sid", tok, { path: "/", http_only: true, same_site: "Lax" })
 ```
 
@@ -82,7 +82,7 @@ session_new(secret) -> { id, cookie } for a fresh session.
 `id` is a 32-byte random token to key your own store by; `cookie` is the
 Set-Cookie header carrying it signed, HttpOnly, SameSite=Lax, for a week.
 
-```ecko
+```ecko fragment
 s = session_new(secret)
 with_headers(redirect("/"), { "set-cookie": s.cookie })
 ```
@@ -127,7 +127,7 @@ abort(status, body?) -> raises an error the app's error layer turns into a page.
 This is how a handler gives up mid-request: `abort(404)` from three calls deep
 reaches the registered 404 handler without every caller checking a return.
 
-```ecko
+```ecko fragment
 post = find(id) ; if post == null { abort(404) }
 ```
 
@@ -160,7 +160,7 @@ cache_control(rules) -> middleware setting cache-control by path prefix.
 `rules` is `[{ prefix, value }]` and the first matching prefix wins, so order
 from most specific to least.
 
-```ecko
+```ecko fragment
 cache_control([{ prefix: "/assets", value: "public, max-age=31536000" }])
 ```
 
@@ -218,7 +218,7 @@ url_for(pattern, params?, query?) -> a URL built from a route pattern.
 `:name` segments are filled from `params`; `query` is appended sorted and
 percent-encoded, so the same inputs always produce the same URL.
 
-```ecko
+```ecko fragment
 url_for("/posts/:id", { id: 7 }, { page: 2 })   # "/posts/7?page=2"
 ```
 
@@ -253,7 +253,7 @@ for an int and the length for anything else.
 `values` holds only the fields that passed, coerced to their type, so an int
 field arrives as an int rather than as text.
 
-```ecko
+```ecko fragment
 r = validate(req.form, { email: { required: true, type: "email" } })
 if not r.valid { return html(form_with(r.errors)) }
 ```
@@ -278,7 +278,7 @@ Every error handler is called as `handler(req, err)`. `err` is null when the
 router simply found no route, so one 404 handler serves both that case and
 an explicit `abort(404)`.
 
-```ecko
+```ecko fragment
 handler = app({ routes: [...], security: true, errors: { "404": not_found } })
 http.serve(8080, handler)
 ```

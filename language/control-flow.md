@@ -1,6 +1,6 @@
 # Control flow
 
-```ecko
+```ecko fragment
 status = if age >= 18 { "adult" } else { "minor" }
 unless ready { wait() }
 
@@ -23,15 +23,15 @@ ternary operator because there is no need for one.
 `if` with the condition negated. An expression like `if`, with an optional
 `else`, yielding `null` when nothing runs. It reads best as a guard:
 
-```ecko
+```ecko fragment
 unless valid(x) { return err }
 ```
 
 ## Ranges
 
 ```ecko
-0..10       # exclusive: 0 to 9
-0..=10      # inclusive: 0 to 10
+0..10  # exclusive: 0 to 9
+0..=10  # inclusive: 0 to 10
 ```
 
 Ranges are lazy, so `for i in 0..1000000` does not build a list. There is no
@@ -44,7 +44,7 @@ capped (10M elements). `list(0..30000000)` raises and says to iterate instead;
 
 ## `for`
 
-```ecko
+```ecko fragment
 for x in items { }
 for c in "hello" { }         # characters
 for byte in b"\x01\x02" { }   # Ints
@@ -57,7 +57,7 @@ elements, and every item must be a list of exactly that length or the loop
 errors. Silent partial binding would be guessing. Use `_` for positions you do
 not need:
 
-```ecko
+```ecko fragment
 for (_, v) in config { print(v) }
 ```
 
@@ -79,7 +79,7 @@ Work in `for`, `while` and `loop`. Using one outside a loop is an error.
 
 ## Iterating a channel
 
-```ecko
+```ecko fragment
 for job in jobs { handle(job) }
 ```
 

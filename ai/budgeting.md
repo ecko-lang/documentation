@@ -1,6 +1,6 @@
 # Token budgeting
 
-```ecko
+```ecko fragment
 n   = tokens("some prompt text")       # Int
 usd = cost("gpt-4o-mini", n, 500)      # Float, estimated USD
 
@@ -19,7 +19,7 @@ Prices from a built-in table of common models and **errors on an unknown model**
 so a typo cannot silently price at zero. For a model not in the table, pass
 explicit prices:
 
-```ecko
+```ecko fragment
 cost(in_tokens, out_tokens, in_per_1m, out_per_1m)
 ```
 

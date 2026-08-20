@@ -1,6 +1,6 @@
 # Error handling & the error dialect
 
-```ecko
+```ecko fragment
 try {
     risky()
 } catch (error) {
@@ -51,7 +51,7 @@ library returns them.
 
 ## Dispatching
 
-```ecko
+```ecko fragment
 try {
     data = json.decode(body)
 } catch (e) {

@@ -6,7 +6,7 @@ Geospatial basics: geohash encode/decode, great-circle distance and bearing, bou
 ecko get github.com/ecko-lang/geo
 ```
 
-```ecko
+```ecko fragment
 import geo
 ```
 

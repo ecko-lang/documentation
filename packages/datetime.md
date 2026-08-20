@@ -6,7 +6,7 @@ Calendar dates, times, and durations for Ecko: components, arithmetic, and forma
 ecko get github.com/ecko-lang/datetime
 ```
 
-```ecko
+```ecko fragment
 import datetime
 ```
 
@@ -74,7 +74,7 @@ Whether `y` is a leap year, by the full Gregorian rule.
 
 How many days month `m` has in year `y`, accounting for leap years.
 
-```ecko
+```ecko fragment
 days_in_month(2024, 2)   # 29
 ```
 
@@ -108,7 +108,7 @@ it exists so a duration is always spelled the same way.
 
 The timestamp `duration` milliseconds later.
 
-```ecko
+```ecko fragment
 add(now(), hours(3))
 ```
 
@@ -116,7 +116,7 @@ add(now(), hours(3))
 
 The timestamp `duration` milliseconds earlier.
 
-```ecko
+```ecko fragment
 sub(now(), days(7))   # a week ago
 ```
 
@@ -150,7 +150,7 @@ Midnight UTC on the same day.
 
 Format a timestamp with a strftime-style pattern.
 
-```ecko
+```ecko fragment
 format(now(), "%Y-%m-%d")
 ```
 
@@ -167,6 +167,6 @@ Parse an ISO-8601 timestamp to milliseconds. Raises when it does not parse.
 Parse `s` using an explicit strftime-style format, for input that is not
 ISO-8601.
 
-```ecko
+```ecko fragment
 parse_format("29/07/2026", "%d/%m/%Y")
 ```

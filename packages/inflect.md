@@ -6,7 +6,7 @@ URL slugs, English pluralisation, ordinals and identifier case conversion. Pure 
 ecko get github.com/ecko-lang/inflect
 ```
 
-```ecko
+```ecko fragment
 import inflect
 ```
 

@@ -6,7 +6,7 @@ Terminal UI composition for Ecko: width-aware pad/center/truncate, bordered boxe
 ecko get github.com/ecko-lang/tui
 ```
 
-```ecko
+```ecko fragment
 import tui
 ```
 

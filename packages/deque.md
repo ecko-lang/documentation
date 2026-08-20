@@ -6,7 +6,7 @@ A double-ended queue for Ecko: push/pop/peek at both ends, amortized O(1). Immut
 ecko get github.com/ecko-lang/deque
 ```
 
-```ecko
+```ecko fragment
 import deque
 ```
 
@@ -34,7 +34,7 @@ is_empty(q) -> true when size is 0.
 
 push_front(q, x) -> a new deque with `x` at the front.
 
-```ecko
+```ecko fragment
 q = push_front(new(), 1)
 ```
 

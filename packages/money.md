@@ -6,7 +6,7 @@ Currency amounts on Decimal: exact arithmetic, ISO 4217 minor units, and allocat
 ecko get github.com/ecko-lang/money
 ```
 
-```ecko
+```ecko fragment
 import money
 ```
 

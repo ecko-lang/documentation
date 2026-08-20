@@ -6,7 +6,7 @@ IPv4/IPv6 address parsing, validation, CIDR membership, and private-range checks
 ecko get github.com/ecko-lang/ip
 ```
 
-```ecko
+```ecko fragment
 import ip
 ```
 
@@ -26,7 +26,7 @@ parse(s) -> { version, groups, is_private }. Raises kind-"value" if invalid.
 Whether `s` parses as an IPv4 or IPv6 address. The non-raising form of
 `parse` - use it when a bad address is an expected input, not an error.
 
-```ecko
+```ecko fragment
 is_valid("192.168.1.1")   # true
 is_valid("nope")          # false
 ```

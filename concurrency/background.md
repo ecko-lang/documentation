@@ -2,7 +2,7 @@
 
 Fire-and-forget work, with a handle to check on it.
 
-```ecko
+```ecko fragment
 import std.bg
 
 t = bg.spawn(fn() expensive())
@@ -29,7 +29,7 @@ task value that `await` accepts.
 
 ## Timers
 
-```ecko
+```ecko fragment
 bg.after(1000, fn() cleanup())
 beat = bg.every(30000, fn() heartbeat())
 # ...later

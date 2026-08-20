@@ -6,7 +6,7 @@ Build MIME messages (multipart, attachments, RFC 5322) and look up media types b
 ecko get github.com/ecko-lang/mime
 ```
 
-```ecko
+```ecko fragment
 import mime
 ```
 

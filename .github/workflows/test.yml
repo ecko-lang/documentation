@@ -1,0 +1,35 @@
+name: Test
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ["v*.*.*"]
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Ecko
+        run: |
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            url="https://ecko.sh/dl/${GITHUB_REF_NAME}/ecko-x86_64-linux.tar.gz"
+          else
+            url="https://ecko.sh/dl/latest/ecko-x86_64-linux.tar.gz"
+          fi
+          curl -fSL --retry 3 "$url" -o /tmp/ecko.tar.gz
+          mkdir -p /tmp/ecko && tar -xzf /tmp/ecko.tar.gz -C /tmp/ecko
+          bin="$(find /tmp/ecko -type f -name ecko | head -1)"
+          sudo install -m 0755 "$bin" /usr/local/bin/ecko
+          ecko --version
+      - name: Snapshot header matches tag
+        if: github.ref_type == 'tag'
+        run: |
+          ver="${GITHUB_REF_NAME}"
+          head -1 tools/from-core/coverage.yaml | grep -qx "# ecko ${ver}"
+          head -1 tools/from-core/std-exports.txt | grep -qx "# ecko ${ver}"
+      - name: Pages named by the map exist
+        run: ./tools/check-coverage-pages.sh .
+      - name: std.* names appear on their pages
+        run: ./tools/check-std-inventory.sh .
+      - name: Fences
+        run: ./tools/check-doc-fences.sh start language ai concurrency stdlib packages cli config architecture index.md

@@ -2,7 +2,7 @@
 
 Standard output, and standard input.
 
-```ecko
+```ecko fragment
 import std.io
 
 io.print("hello")        # identical to the global print("hello")
@@ -17,7 +17,7 @@ text = io.read_all()     # everything on stdin, as one string
 
 This is what lets an Ecko program be a pipeline stage:
 
-```ecko
+```ecko fragment
 import std.io
 
 mut n = 0

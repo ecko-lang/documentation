@@ -2,7 +2,7 @@
 
 Assignment reaches into structures. **The root binding must be mutable.**
 
-```ecko
+```ecko fragment
 mut user = { name: "Alice", tags: ["a"] }
 
 user.name = "Bob"
@@ -12,7 +12,7 @@ user.profile.city = "Cairo"     # nested paths work
 
 ## Why the root must be mutable
 
-```ecko
+```ecko fragment
 let user = { name: "Alice" }
 user.name = "Bob"               # error
 ```
@@ -28,7 +28,7 @@ model rather than being a separate restriction to remember.
 mut a = [1, 2, 3]
 b = a
 a[0] = 99
-print(b[0])       # 1 - b is an independent value
+print(b[0])  # 1 - b is an independent value
 ```
 
 Binding does not alias. Underneath, collections are reference-counted and copied
@@ -39,7 +39,7 @@ The exception is [`cell`](../concurrency/cell.md), which shares deliberately.
 
 ## Bounds and keys are strict
 
-```ecko
+```ecko fragment
 mut xs = [1, 2, 3]
 xs[9] = 0         # error: index 9 is out of bounds (len 3)
 ```
@@ -47,7 +47,7 @@ xs[9] = 0         # error: index 9 is out of bounds (len 3)
 Assignment does not grow a list, and it does not create a missing intermediate
 map. Use `push` to extend, and `insert` to add a key:
 
-```ecko
+```ecko fragment
 xs = push(xs, 4)
 m  = insert(m, "key", value)
 ```

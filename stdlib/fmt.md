@@ -1,6 +1,6 @@
 # `std.fmt`
 
-```ecko
+```ecko fragment
 import std.fmt
 
 fmt.format(r"{} of {}", 3, 10)     # "3 of 10"
@@ -13,7 +13,7 @@ fmt.fixed(3.14159, 2)               # "3.14"
 
 ## `format` needs a raw string
 
-```ecko
+```ecko fragment
 fmt.format(r"{} of {}", 3, 10)     # correct
 fmt.format("{} of {}", 3, 10)      # parse error
 ```
@@ -30,7 +30,7 @@ that is why.
 Most of the time you do not need `format` at all - interpolation is built into the
 language and reads better:
 
-```ecko
+```ecko fragment
 "{count} of {total}"                # idiomatic
 fmt.format(r"{} of {}", count, total)
 ```
@@ -43,7 +43,7 @@ from a table, or reused across call sites with different arguments.
 `fmt.fixed(value, places)` renders a number to a set number of decimals, padding
 with zeroes rather than trimming the text:
 
-```ecko
+```ecko fragment
 fmt.fixed(1.5, 3)                   # "1.500"
 fmt.fixed(2.5, 0)                   # "3"
 fmt.fixed(decimal("0.07"), 2)       # "0.07"

@@ -4,7 +4,7 @@ A package is a directory of Ecko source with an `ecko.json` manifest. There is n
 central registry to publish to, no build step, and nothing native to compile: a
 package is code you can read.
 
-```ecko
+```ecko fragment
 import url                    # resolves to ./vendor/.../url
 ```
 

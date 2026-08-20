@@ -2,7 +2,7 @@
 
 zip and tar containers: create, list, extract.
 
-```ecko
+```ecko fragment
 import std.archive
 
 archive.zip_create("out.zip", ["src/", "README.md"])
@@ -69,7 +69,7 @@ is a million small files rather than one big one.
 
 Names inside the archive are relative, rooted at the input's last component:
 
-```ecko
+```ecko fragment
 archive.zip_create("out.zip", ["/srv/app/src"])   # entries: src/...
 archive.zip_create("out.zip", ["src/"])           # entries: src/...
 ```

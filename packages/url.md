@@ -6,7 +6,7 @@ URL parsing, query strings, and reference resolution for Ecko.
 ecko get github.com/ecko-lang/url
 ```
 
-```ecko
+```ecko fragment
 import url
 ```
 

@@ -3,7 +3,7 @@
 **Calling an `async fn` spawns a task and returns a handle immediately.** `await`
 blocks until it finishes and yields the result.
 
-```ecko
+```ecko fragment
 async fn summarize(doc) {
     ai "Summarize in one line: {doc}"
 }
@@ -18,7 +18,7 @@ than a value.
 
 ## Anonymous form
 
-```ecko
+```ecko fragment
 t = (async fn(x) heavy(x))(5)
 ```
 
@@ -34,7 +34,7 @@ a task.
 **Errors surface at `await`.** An error raised inside a task - including a
 structured `error({ kind, message })` - arrives intact where it is awaited:
 
-```ecko
+```ecko fragment
 try { result = await t } catch (e) { print(e.message) }
 ```
 
@@ -50,7 +50,7 @@ resumes, so nested awaits cannot deadlock the pool.
 
 ## Cancellation
 
-```ecko
+```ecko fragment
 t = slow_thing()
 cancel(t)
 ```
@@ -70,7 +70,7 @@ Higher-order built-ins that need each result immediately - predicates, key
 functions, folds, `retry`, `cell_update` - reject an async callback rather than
 silently comparing task handles:
 
-```ecko
+```ecko fragment
 filter(xs, async fn(x) check(x))         # error
 tasks = map(xs, async fn(x) check(x))    # map to tasks...
 keep  = filter(zip(xs, map(tasks, fn(t) await t)), fn(p) p[1])

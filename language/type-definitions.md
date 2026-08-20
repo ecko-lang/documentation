@@ -1,7 +1,8 @@
 # Type definitions
 
 ```ecko
-type Shape = Circle { r: Int } | Square { side: Int }
+type Shape = Circle { r: Int }
+    | Square { side: Int }
 type Color = Red | Green | Blue
 ```
 
@@ -9,14 +10,14 @@ A `type` declares a tagged union. Each variant is a constructor.
 
 ## Construction
 
-```ecko
+```ecko fragment
 c = Circle(3)          # positional, in field order
 red = Red()            # a fieldless variant is still constructed
 ```
 
 Both are `struct` values. Fields are read with `.`:
 
-```ecko
+```ecko fragment
 print(c.r)             # 3
 ```
 
@@ -28,7 +29,7 @@ value. Call it.
 Variants match positionally by field order, which is where a `type` earns its
 keep:
 
-```ecko
+```ecko fragment
 area = match shape {
     Circle(r) => 3.14159 * r * r
     Square(side) => side * side
@@ -42,7 +43,7 @@ production.
 
 Fieldless variants match by name:
 
-```ecko
+```ecko fragment
 match colour {
     Red => "stop"
     Green => "go"
@@ -54,7 +55,7 @@ match colour {
 
 `Result` (`Ok`/`Err`) and `Option` (`Some`/`None`) are predefined:
 
-```ecko
+```ecko fragment
 match parse(s) {
     Ok(v) => v
     Err(e) => default
@@ -70,7 +71,7 @@ shapes, not to imitate error handling from another language.
 
 A declared type is a schema, which is what makes typed model output ergonomic:
 
-```ecko
+```ecko fragment
 type Sentiment = Positive | Negative | Neutral
 
 mood = ai[Sentiment] "classify this review: {text}"
@@ -86,7 +87,7 @@ The model is constrained to the variants, the result is coerced to one, and the
 `match` over it is exhaustiveness-checked. A struct type works the same way, with
 each field coerced to its declared type:
 
-```ecko
+```ecko fragment
 type Person = { name: String, age: Int }
 p = ai[Person] "extract the person from: {text}"
 ```

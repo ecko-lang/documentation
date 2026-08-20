@@ -2,7 +2,7 @@
 
 Numbers and durations rendered for people.
 
-```ecko
+```ecko fragment
 import std.humanize
 
 humanize.duration(3661000)     # "1 hour 1 minute"
@@ -32,7 +32,7 @@ guess that one mouse is several mice.
 These produce **lossy, locale-flavoured English**. Never parse them, never compare
 them, and never store them:
 
-```ecko
+```ecko fragment
 print("uploaded {humanize.size(n)}")     # good
 record({ size: humanize.size(n) })       # bad - store n
 ```

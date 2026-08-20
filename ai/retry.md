@@ -14,7 +14,7 @@ Backoff starts at `ECKO_RETRY_BASE_MS` (default 50ms) and doubles.
 
 `retry` wraps any failing operation:
 
-```ecko
+```ecko fragment
 body = retry(5, fn() http.get(url).body)
 row  = retry(3, fn() sql.query_one(db, "select 1"))
 ```
@@ -46,7 +46,7 @@ A malformed prompt, an invalid API key, a schema the model cannot satisfy, a
 contract that is simply false: none of these improve with another attempt. Where
 the distinction matters, catch and inspect rather than blanket-retrying:
 
-```ecko
+```ecko fragment
 try {
     result = retry(3, fn() call())
 } catch (e) {

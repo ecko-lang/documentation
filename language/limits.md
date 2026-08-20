@@ -63,7 +63,7 @@ failure.
 
 ## Catching a limit
 
-```ecko
+```ecko fragment
 try {
     risky_parse(untrusted)
 } catch (e) {

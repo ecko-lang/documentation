@@ -13,7 +13,7 @@ values are simply there.
 }
 ```
 
-```ecko
+```ecko fragment
 import std.defaults
 
 print(defaults.app)          # "billing"
@@ -28,7 +28,7 @@ Each top-level key other than `environment` becomes a member of `std.defaults`,
 keeping its JSON type - strings stay strings, numbers become `int` or `float`,
 and lists and objects become Ecko lists and maps.
 
-```ecko
+```ecko fragment
 import std.defaults
 
 defaults.retries + 1         # a JSON number is a real number
@@ -38,7 +38,7 @@ defaults.hosts[0]            # a JSON list is a real list
 Indexing by string reaches the same value, which is what you want when the key
 is only known at runtime:
 
-```ecko
+```ecko fragment
 import std.defaults
 
 wanted = "api_url"
@@ -75,7 +75,7 @@ your program runs, so it reads back through `std.os` like anything else:
 ```ecko
 import std.os
 
-os.env("ECKO_AI_PROVIDER")   # "ollama"
+os.env("ECKO_AI_PROVIDER")  # "ollama"
 ```
 
 Values must be a string, number, or boolean. An object or a list is an error
@@ -102,7 +102,7 @@ There is no second file. A package manifest is just a
 defaults file that has no `environment` block, so its own fields read back the
 same way:
 
-```ecko
+```ecko fragment
 import std.defaults
 
 defaults.version             # the manifest's version

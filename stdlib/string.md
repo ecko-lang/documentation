@@ -6,11 +6,11 @@ is correct for multi-byte text.
 ```ecko
 import std.string
 
-string.title("the quick fox")            # "The Quick Fox"
-string.pad_start("7", 4, "0")             # "0007"
-string.substring("hello world", -5)       # "world"
-string.replace_first("a-b-c", "-", "/")   # "a/b-c"
-string.count("banana", "na")              # 2
+string.title("the quick fox")  # "The Quick Fox"
+string.pad_start("7", 4, "0")  # "0007"
+string.substring("hello world", -5)  # "world"
+string.replace_first("a-b-c", "-", "/")  # "a/b-c"
+string.count("banana", "na")  # 2
 ```
 
 The most common operations are global built-ins already - `upper`, `lower`, `trim`,
@@ -31,7 +31,7 @@ The most common operations are global built-ins already - `upper`, `lower`, `tri
 
 ## Trim
 
-```ecko
+```ecko fragment
 string.trim(s)                  # whitespace
 string.trim(s, "x")             # any character in the set
 string.trim("xxhixx", "x")      # "hi"
@@ -44,7 +44,7 @@ substring - `trim(s, "ab")` strips any `a` or `b` from the ends.
 
 ## Pad
 
-```ecko
+```ecko fragment
 string.pad_start(s, 8)          # fill defaults to a space
 string.pad_end(s, 8, ".")
 string.center(s, 20, "-")       # odd leftover goes right
@@ -57,7 +57,7 @@ the gap.
 
 ## Extract
 
-```ecko
+```ecko fragment
 string.substring(s, 1, 4)       # clamps
 string.substring(s, -5)         # negative from the end
 string.char_at(s, 0)            # errors out of range
@@ -68,7 +68,7 @@ string.char_at(s, 0)            # errors out of range
 
 ## Code points
 
-```ecko
+```ecko fragment
 string.ord("A")     # 65
 string.ord("𝄞")     # 119070 - a non-BMP character
 string.chr(65)      # "A"
@@ -85,7 +85,7 @@ offset, or `-1`), `count(s, sub)` (non-overlapping).
 
 ## Split and join
 
-```ecko
+```ecko fragment
 string.split("a,b,c", ",", 1)       # ["a", "b,c"]   limit caps the splits
 string.rsplit("a,b,c", ",", 1)      # ["a,b", "c"]   counted from the right
 string.partition("k=v=w", "=")      # ["k", "=", "v=w"]
@@ -98,7 +98,7 @@ string.join(xs, ", ")
 `partition` and `rpartition` split **once** and always return a 3-list, so a
 destructure never fails:
 
-```ecko
+```ecko fragment
 let (key, sep, value) = string.partition(line, "=")
 ```
 
@@ -122,7 +122,7 @@ or whitespace" use `string.is_blank`.
 
 ## From bytes
 
-```ecko
+```ecko fragment
 string.from_utf8(b)         # strict decode, catchable
 string.from_utf8_lossy(b)   # opt-in replacement characters
 ```

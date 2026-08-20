@@ -6,7 +6,7 @@ An SMTP client (RFC 5321) written in Ecko, over std.net raw sockets + STARTTLS.
 ecko get github.com/ecko-lang/smtp-client
 ```
 
-```ecko
+```ecko fragment
 import smtp
 ```
 

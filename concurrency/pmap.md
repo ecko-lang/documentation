@@ -2,7 +2,7 @@
 
 Map over a list in parallel, on a bounded worker pool.
 
-```ecko
+```ecko fragment
 summaries = pmap(docs, fn(d) ai "Summarize in one line: {d}")
 ```
 
@@ -16,7 +16,7 @@ Each worker gets a **snapshot** of the arguments and captured variables it needs
 Mutating an ordinary `mut` from inside a parallel closure changes only that
 worker's copy:
 
-```ecko
+```ecko fragment
 mut count = 0
 pmap(items, fn(i) { count = count + 1 })   # count is still 0
 print(count)                                # 0
@@ -43,7 +43,7 @@ the machine's total concurrency for CPU-adjacent work.
 An error in one worker surfaces from the `pmap` call. Wrap the body when you want
 partial results instead of an abort:
 
-```ecko
+```ecko fragment
 results = pmap(urls, fn(u) try { fetch(u) } catch (e) { null })
 ok = filter(results, fn(r) r != null)
 ```

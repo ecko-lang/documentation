@@ -3,7 +3,7 @@
 Decode, transform and encode PNG and JPEG. This is also what backs
 [image input to `ai`](../ai/multimodal.md).
 
-```ecko
+```ecko fragment
 import std.image
 
 img = image.load("photo.jpg")
@@ -32,14 +32,14 @@ how many you hold at once.
 
 ## Feeding `ai`
 
-```ecko
+```ecko fragment
 ai "what does this chart show?" on image.load("chart.png")
 ```
 
 A transform pipeline flows straight in, and **resizing first is usually the right
 move**:
 
-```ecko
+```ecko fragment
 ai "read the label" on image.resize(photo, 1024, 1024)
 ```
 
@@ -60,7 +60,7 @@ Decoding attacker-supplied image data means running a decoder over hostile input
 and a small file can decode to an enormous bitmap. **Check dimensions before
 resizing**, and bound what you accept:
 
-```ecko
+```ecko fragment
 img = image.decode(upload)
 d = image.dimensions(img)
 if d.width * d.height > 40000000 { image.free(img) ; reject("too large") }

@@ -1,6 +1,6 @@
 # Modules & imports
 
-```ecko
+```ecko fragment
 import std.time                # binds `time`
 import std.time as t           # choose the name
 import "./helpers.ecko"        # binds `helpers` by file stem
@@ -13,7 +13,7 @@ Three kinds of import, one syntax. A bare name is a
 
 ## Aliasing
 
-```ecko
+```ecko fragment
 import std.time as t
 fn time() = now_ms()           # your own `time` is free
 ```
@@ -28,8 +28,8 @@ to convert.
 **Only `export`-marked definitions are visible to an importer.**
 
 ```ecko
-export fn clean(s) = trim(lower(s))     # public
-fn internal(s) = s                       # private
+export fn clean(s) = trim(lower(s))  # public
+fn internal(s) = s  # private
 ```
 
 The `export` modifier is inline, on the declaration. An older `export { a, b }`
@@ -39,7 +39,7 @@ block form existed; `ecko fix --migrate-exports` rewrites it.
 
 A multi-file package curates its public surface in its entrypoint:
 
-```ecko
+```ecko fragment
 export * from "./validators.ecko"          # the whole exported surface
 export { with_headers } from "./util.ecko" # just this one
 export { esc as escape } from "./e.ecko"   # renamed
@@ -58,7 +58,7 @@ the generated reference is the real public surface.
 Legal, and sometimes necessary - a package exporting `get`, `join` or `string`.
 Reach the original through `core.*`:
 
-```ecko
+```ecko fragment
 export fn get(c, key) { ... }
 fn internal(m, k) = core.get(m, k)      # the builtin
 ```

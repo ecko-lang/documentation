@@ -5,7 +5,7 @@ form.
 
 ```ecko
 # a note to whoever reads this next
-x = 1        # comments can trail code too
+x = 1  # comments can trail code too
 ```
 
 ## `##` is documentation
@@ -13,7 +13,7 @@ x = 1        # comments can trail code too
 Doubling the marker makes a comment into **documentation**, which
 [`ecko doc`](../cli/doc.md) turns into markdown.
 
-```ecko
+```ecko fragment
 ## Fetch a user by id.
 ##
 ## Returns null when no such user exists.
@@ -24,7 +24,7 @@ There is only one comment character to remember. Everything after a `#` is a
 comment; a doubled one is *also* documentation. A third `#` is content rather
 than marker, so a banner keeps its shape:
 
-```ecko
+```ecko fragment
 ### ------------------------------
 ### Section: request handling
 ### ------------------------------

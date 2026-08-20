@@ -1,6 +1,6 @@
 # `std.test`
 
-```ecko
+```ecko fragment
 import std.test
 
 test.case("splits on commas", fn() {
@@ -38,7 +38,7 @@ raise before the assertion could catch it.
 **`ecko test` forces [mock mode](../ai/mock-mode.md)** and ignores your API key. So
 a test over an AI pipeline is deterministic, offline and free:
 
-```ecko
+```ecko fragment
 test.case("classifies sentiment", fn() {
     test.eq(classify("great service"), Positive())
 })

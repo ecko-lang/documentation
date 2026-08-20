@@ -45,7 +45,7 @@ same way with `ecko file.ecko`.
 
 Import a sibling by path. The binding name comes from the file stem:
 
-```ecko
+```ecko fragment
 import "./helpers.ecko"       # binds `helpers`
 import "./helpers.ecko" as h  # or choose the name
 

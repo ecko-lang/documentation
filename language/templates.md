@@ -63,14 +63,14 @@ so the model treats it as data:
 
 ```ecko
 template reply(@untrusted m) = "answer: {input m}"  # ok
-template reply(@untrusted m) = "answer: {m}"        # warning: use {input m}
+template reply(@untrusted m) = "answer: {m}"  # warning: use {input m}
 ```
 
 `@untrusted` also works on a `let` binding or an ordinary function parameter,
 and taint propagates through derived `let`s. A marked value warns wherever it
 reaches an `ai` prompt, as a conservative audit:
 
-```ecko
+```ecko fragment
 @untrusted let body = http.get(url).body
 ai "summary: {body}"   # warning (a plain ai string cannot use {input})
 ```

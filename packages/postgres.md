@@ -6,7 +6,7 @@ A PostgreSQL client written in Ecko: v3 wire protocol + SCRAM-SHA-256 over std.n
 ecko get github.com/ecko-lang/postgresql-client
 ```
 
-```ecko
+```ecko fragment
 import postgres
 ```
 

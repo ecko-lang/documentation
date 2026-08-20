@@ -8,12 +8,14 @@ server streaming bytes to a client. They compose - a channel joins them.
 ```ecko
 s = ai "write a poem" -> stream
 
-for chunk in s { print_no_newline(chunk) }   # incremental
+for chunk in s {
+    print_no_newline(chunk)  # incremental
+}
 ```
 
 Or block for the whole thing by using the stream as a value:
 
-```ecko
+```ecko fragment
 full = string(s)
 ```
 
@@ -34,7 +36,7 @@ See [Streaming](../ai/streaming.md) for the `ai` side in full.
 An HTTP handler can return a body fed by a [channel](./channels.md), which lets
 you send the first byte before the last one exists:
 
-```ecko
+```ecko fragment
 import std.http
 
 fn handler(req) {

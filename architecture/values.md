@@ -19,7 +19,7 @@ The observable behaviour is plain **value semantics**:
 mut a = [1, 2, 3]
 b = a
 a[0] = 99
-print(b[0])       # 1
+print(b[0])  # 1
 ```
 
 There is no aliasing to reason about, and no `clone()` to remember. The
@@ -33,9 +33,9 @@ bound to the name.
 
 ```ecko
 a = cell(0)
-b = a             # the same cell
+b = a  # the same cell
 cell_set(b, 5)
-cell_get(a)       # 5
+cell_get(a)  # 5
 ```
 
 A [cell](../concurrency/cell.md) shares on clone. That is precisely what lets

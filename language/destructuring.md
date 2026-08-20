@@ -2,7 +2,7 @@
 
 Bind several names from a list at once.
 
-```ecko
+```ecko fragment
 let (a, b) = [1, 2]           # a = 1, b = 2, both immutable
 mut (x, y) = [10, 20]         # mutable
 
@@ -14,7 +14,7 @@ let (q, r) = divmod(17, 5)
 
 The value must be a list of **exactly** that length:
 
-```ecko
+```ecko fragment
 let (a, b) = [1, 2, 3]        # error: destructuring expected 2 elements, got 3
 ```
 
@@ -36,7 +36,7 @@ at the binding than to debug a `null` three functions later.
 
 Functions that return a pair, which is a common shape in pure-Ecko code:
 
-```ecko
+```ecko fragment
 let (head, sep, tail) = string.partition(line, "=")
 ```
 
@@ -47,7 +47,7 @@ destructure never fails.
 
 Same flat, strict form:
 
-```ecko
+```ecko fragment
 for (k, v) in config { print("{k} = {v}") }      # map pairs, sorted by key
 for (i, x) in enumerate(xs) { print("{i}: {x}") }
 for (a, b, c) in triples { }

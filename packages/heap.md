@@ -6,7 +6,7 @@ A priority queue (min-heap) for Ecko: push/pop/peek, heapify, and top-k. Immutab
 ecko get github.com/ecko-lang/heap
 ```
 
-```ecko
+```ecko fragment
 import heap
 ```
 

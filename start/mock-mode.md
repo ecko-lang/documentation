@@ -4,9 +4,9 @@
 answers from a deterministic mock instead of failing.
 
 ```ecko
-print(ai "Summarize this")        # [AI Mock] Summarize this
-print(ai[Int] "How many?")        # 42
-print(ai[Bool] "Is this spam?")   # true
+print(ai "Summarize this")  # [AI Mock] Summarize this
+print(ai[Int] "How many?")  # 42
+print(ai[Bool] "Is this spam?")  # true
 ```
 
 This is not a stub that returns null. Mock answers are **schema-valid** and go

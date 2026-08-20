@@ -1,6 +1,6 @@
 # `std.csv`
 
-```ecko
+```ecko fragment
 import std.csv
 
 rows = csv.parse(text)          # rows as column-keyed maps
@@ -13,7 +13,7 @@ csv.write("out.csv", rows)
 
 The first line is the header, and each row becomes a map keyed by column name:
 
-```ecko
+```ecko fragment
 for row in csv.read("people.csv") {
     print("{row.name} is {row.age}")
 }
@@ -32,7 +32,7 @@ a list of lists and write it yourself.
 
 CSV has no types. Every value parses as a string, including numbers:
 
-```ecko
+```ecko fragment
 row.age             # "42", not 42
 int(row.age)        # 42
 ```

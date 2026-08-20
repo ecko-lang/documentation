@@ -1,6 +1,6 @@
 # Secrets
 
-```ecko
+```ecko fragment
 db_pass = secret(os.env("DB_PASS"))
 
 print(db_pass)                  # [secret]
@@ -22,7 +22,7 @@ config map.
 
 ## `reveal` is the only way out
 
-```ecko
+```ecko fragment
 reveal(db_pass)      # the inner value
 is_secret(v)         # test for the wrapper
 ```

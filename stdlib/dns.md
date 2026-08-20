@@ -1,6 +1,6 @@
 # `std.dns`
 
-```ecko
+```ecko fragment
 import std.dns
 
 dns.resolve("ecko.sh")              # A/AAAA addresses
@@ -22,7 +22,7 @@ domain's actual records - `MX` before sending mail, `TXT` for a verification tok
 
 ## MX records
 
-```ecko
+```ecko fragment
 for mx in dns.resolve("example.com", "MX") {
     print("{mx.priority} {mx.host}")
 }
@@ -37,7 +37,7 @@ A name that does not resolve raises `{ kind: "net", host }` rather than returnin
 empty list, so a typo does not read as "no records". Catch it where the name came
 from outside:
 
-```ecko
+```ecko fragment
 try { addrs = dns.resolve(domain) } catch (e) { reject("unknown host") }
 ```
 

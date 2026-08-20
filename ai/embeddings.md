@@ -3,16 +3,16 @@
 An embedding turns text into a vector, so that similarity becomes arithmetic.
 
 ```ecko
-v  = embed("some text")            # [Float]
-vs = embed_all(["a", "b", "c"])    # [[Float]]
-cosine(v, v)                       # 1.0
+v = embed("some text")  # [Float]
+vs = embed_all(["a", "b", "c"])  # [[Float]]
+cosine(v, v)  # 1.0
 ```
 
 `embed`, `embed_all` and `cosine` are global built-ins - no import.
 
 ## The vector store
 
-```ecko
+```ecko fragment
 import std.db
 
 db.add("doc1", "The moon is made of rock.")
@@ -31,7 +31,7 @@ and honest about not being a distributed index.
 
 ## The pipeline
 
-```ecko
+```ecko fragment
 import std.rag
 
 passages = rag.chunk(long_text, size: 120, overlap: 20)

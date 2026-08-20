@@ -1,0 +1,172 @@
+# ecko v0.14.0
+# Spec heading → public docs page → example file.
+# See docs/specs/2026-08-20-docs-sync-design.md.
+sections:
+  - heading: "Overview"
+    page: start/a-file-is-a-program.md
+    example: examples/hello.ecko
+  - heading: "Design Principles"
+    public: false
+  - heading: "Statements and Newlines"
+    page: language/statements.md
+    example: examples/language/basics.ecko
+  - heading: "Comments & Documentation"
+    page: language/comments.md
+    example: examples/language/doc_comments.ecko
+  - heading: "Variables & Mutability"
+    page: language/variables.md
+    example: examples/language/assignment.ecko
+  - heading: "Numbers"
+    page: language/numbers.md
+    example: examples/language/numeric_safety.ecko
+  - heading: "Functions & Lambdas"
+    page: language/functions.md
+    example: examples/language/function_args.ecko
+  - heading: "Control Flow"
+    page: language/control-flow.md
+    example: examples/language/control_flow.ecko
+  - heading: "Pattern Matching"
+    page: language/pattern-matching.md
+    example: examples/language/match.ecko
+  - heading: "Error Handling"
+    page: language/error-handling.md
+    example: examples/language/errors.ecko
+  - heading: "Secrets"
+    page: language/secrets.md
+    example: examples/language/secrets.ecko
+  - heading: "Strings: Triple-Quoted Literals"
+    page: language/strings.md
+    example: examples/language/string_literals.ecko
+  - heading: "Bytes & Bitwise Operators"
+    page: language/bytes.md
+    example: examples/language/bitwise.ecko
+  - heading: "Templates"
+    page: language/templates.md
+    example: examples/ai/templates.ecko
+  - heading: "Strings (`std.string`)"
+    page: stdlib/string.md
+    example: examples/stdlib/string.ecko
+  - heading: "AI/LLM Primitives"
+    page: ai/typed-output.md
+    example: examples/ai/ai.ecko
+  - heading: "Structured Data"
+    page: language/data-access.md
+    example: examples/language/maps.ecko
+  - heading: "Modules"
+    page: language/modules.md
+    example: examples/modules/import.ecko
+  - heading: "Standard input and output (`std.io`)"
+    page: stdlib/io.md
+    example: examples/stdlib/stdin.ecko
+  - heading: "Time (`std.time`)"
+    page: stdlib/time.md
+    example: examples/stdlib/time.ecko
+  - heading: "Debug (`std.debug`)"
+    page: stdlib/debug.md
+    example: examples/stdlib/debug.ecko
+  - heading: "Humanize (`std.humanize`)"
+    page: stdlib/humanize.md
+    example: examples/stdlib/humanize.ecko
+  - heading: "Config (`std.config`)"
+    page: stdlib/config.md
+    example: examples/stdlib/config_load.ecko
+  - heading: "Project defaults (`std.defaults`)"
+    page: stdlib/defaults.md
+    example: examples/defaults/main.ecko
+  - heading: "Regex (`std.re`)"
+    page: stdlib/re.md
+    example: examples/stdlib/regex.ecko
+  - heading: "OS & Filesystem (`std.os`, `std.fs`)"
+    page: stdlib/fs.md
+    example: examples/stdlib/files.ecko
+  - heading: "Images (`std.image`)"
+    page: stdlib/image.md
+    example: examples/stdlib/image.ecko
+  - heading: "Compression (`std.zlib`)"
+    page: stdlib/zlib.md
+    example: examples/stdlib/zlib.ecko
+  - heading: "HTTP"
+    page: stdlib/http.md
+    example: examples/stdlib/streaming_http.ecko
+  - heading: "Archives (`std.archive`)"
+    page: stdlib/archive.md
+    example: examples/stdlib/archive.ecko
+  - heading: "Child processes (`std.proc`)"
+    page: stdlib/proc.md
+    example: examples/stdlib/proc.ecko
+  - heading: "OS signals (`std.signal`)"
+    page: stdlib/signal.md
+    example: examples/stdlib/signal.ecko
+  - heading: "Filesystem events (`std.watch`)"
+    page: stdlib/watch.md
+    example: examples/stdlib/watch.ecko
+  - heading: "Web router (`std.web`)"
+    page: stdlib/web.md
+    example: examples/stdlib/web.ecko
+  - heading: "WebSockets (`std.ws`)"
+    page: stdlib/ws.md
+    example: examples/stdlib/ws.ecko
+  - heading: "Networking (`std.net`)"
+    page: stdlib/net.md
+    example: examples/stdlib/net.ecko
+  - heading: "DNS (`std.dns`)"
+    page: stdlib/dns.md
+    example: examples/stdlib/dns.ecko
+  - heading: "SQL (`std.sql`)"
+    page: stdlib/sql.md
+    example: examples/stdlib/sql.ecko
+  - heading: "Vector Store"
+    page: stdlib/db.md
+    example: examples/ai/rag.ecko
+  - heading: "Embeddings"
+    page: ai/embeddings.md
+    example: examples/ai/embeddings.ecko
+  - heading: "Low-level LLM access (`std.llm`)"
+    page: stdlib/llm.md
+    example: examples/stdlib/llm.ecko
+  - heading: "Terminal (`std.term`)"
+    page: stdlib/term.md
+    example: examples/stdlib/term.ecko
+  - heading: "CLI parsing (`std.cli`)"
+    page: stdlib/cli.md
+    example: examples/stdlib/cli.ecko
+  - heading: "Randomness, hashing & encoding"
+    page: stdlib/random.md
+    example: examples/stdlib/crypto.ecko
+  - heading: "Math (`std.math`)"
+    page: stdlib/math.md
+    example: examples/stdlib/math.ecko
+  - heading: "Formatting, logging & CSV"
+    page: stdlib/fmt.md
+    example: examples/stdlib/formatting.ecko
+  - heading: "Config formats (`std.toml`, `std.yaml`)"
+    page: stdlib/toml.md
+    example: examples/stdlib/config.ecko
+  - heading: "Shared State (`cell`)"
+    page: concurrency/cell.md
+    example: examples/concurrency/async.ecko
+  - heading: "Async tasks (`async` / `await`)"
+    page: concurrency/async.md
+    example: examples/concurrency/async.ecko
+  - heading: "Background tasks (`std.bg`)"
+    page: concurrency/background.md
+    example: examples/concurrency/background.ecko
+  - heading: "Testing (`std.test` + `ecko test`)"
+    page: stdlib/test.md
+    example: examples/stdlib/testing.ecko
+  - heading: "Built-in Functions"
+    page: stdlib/builtins.md
+    example: examples/stdlib/collections.ecko
+  - heading: "Semantics Notes"
+    public: false
+  - heading: "Resource limits"
+    page: language/limits.md
+    example: examples/language/fib.ecko
+  - heading: "Static analysis (`ecko check`)"
+    page: cli/check.md
+    example: examples/hello.ecko
+  - heading: "Migrating off deprecated syntax"
+    page: language/migration.md
+    example: examples/language/closures.ecko
+  - heading: "Implementation"
+    public: false

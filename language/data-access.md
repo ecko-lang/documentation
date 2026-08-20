@@ -1,14 +1,11 @@
 # Structured data access
 
 ```ecko
-config = {
-    server: { host: "localhost", port: 8080 },
-    features: ["auth", "cache"],
-}
+config = { server: { host: "localhost", port: 8080 }, features: ["auth", "cache"] }
 
-print(config.server.port)     # 8080
-print(config.features[0])     # "auth"
-config.server.port = 9090     # path assignment; root must be mutable
+print(config.server.port)  # 8080
+print(config.features[0])  # "auth"
+config.server.port = 9090  # path assignment; root must be mutable
 ```
 
 ## Keys, bare or quoted
@@ -17,7 +14,7 @@ A bare key must be an identifier - keywords are allowed, so `x.type` is fine. A
 quoted key can be anything, which is what makes HTTP headers and hyphenated JSON
 expressible inline:
 
-```ecko
+```ecko fragment
 http.response(303, "", { location: "/", "set-cookie": "a=b; HttpOnly" })
 ```
 
@@ -28,7 +25,7 @@ to the bare form where the key is a plain identifier.
 
 ## Access is strict
 
-```ecko
+```ecko fragment
 xs[9]          # index 9 is out of bounds (len 3)
 m.key          # map has no key 'key'
 s.field        # struct has no field 'field'
@@ -36,7 +33,7 @@ s.field        # struct has no field 'field'
 
 The nullable lookup is `get`:
 
-```ecko
+```ecko fragment
 get(m, "key")       # null on a miss
 get(xs, 9)          # null on a miss
 ```
@@ -58,15 +55,15 @@ so multi-byte UTF-8 is handled correctly:
 
 ```ecko
 s = "hello"
-s[1..3]      # "el"    exclusive end
-s[0..=2]     # "hel"   inclusive end
-s[..3]       # "hel"   open start
-s[2..]       # "llo"   open end
-s[-3..]      # "llo"   negative from the end
-s[1..-1]     # "ell"
+s[1..3]  # "el"    exclusive end
+s[0..=2]  # "hel"   inclusive end
+s[..3]  # "hel"   open start
+s[2..]  # "llo"   open end
+s[-3..]  # "llo"   negative from the end
+s[1..-1]  # "ell"
 
 xs = [1, 2, 3, 4]
-xs[1..3]     # [2, 3]
+xs[1..3]  # [2, 3]
 ```
 
 **Slices are total** where indexing is strict: out-of-range bounds **clamp**

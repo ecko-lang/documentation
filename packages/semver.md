@@ -6,7 +6,7 @@ Semantic Versioning 2.0.0: parse, compare, sort and match version ranges. Pure -
 ecko get github.com/ecko-lang/semver
 ```
 
-```ecko
+```ecko fragment
 import semver
 ```
 

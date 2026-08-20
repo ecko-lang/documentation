@@ -6,7 +6,7 @@ Sensitive-key detection and masking for safe logging: is_sensitive_key, mask, an
 ecko get github.com/ecko-lang/redact
 ```
 
-```ecko
+```ecko fragment
 import redact
 ```
 

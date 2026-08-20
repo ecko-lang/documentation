@@ -3,7 +3,7 @@
 The host environment and process. `env` and `exec` are gated for
 [package](../packages/capabilities.md) code.
 
-```ecko
+```ecko fragment
 import std.os
 
 os.env("HOME")                  # null when unset
@@ -31,7 +31,7 @@ environment variable. `env_or` supplies a default in one call.
 
 Wrap anything sensitive immediately:
 
-```ecko
+```ecko fragment
 key = secret(os.env("API_KEY"))
 ```
 
@@ -44,7 +44,7 @@ Returns `{ code, stdout, stderr }` and does **not** raise on a non-zero exit -
 check `code` yourself. That is deliberate: for many commands a non-zero status is
 information rather than a failure.
 
-```ecko
+```ecko fragment
 r = os.exec("which", ["ecko"])
 if r.code != 0 { install() }
 ```
@@ -52,7 +52,7 @@ if r.code != 0 { install() }
 **Arguments are a list, and they are not shell-interpreted.** There is no shell
 involved, so no quoting rules and no injection through argument values:
 
-```ecko
+```ecko fragment
 os.exec("git", ["log", "--grep", user_input])     # safe
 ```
 

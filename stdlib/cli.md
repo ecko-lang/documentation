@@ -3,7 +3,7 @@
 Declarative argument parsing. Describe the interface, get a parser and a help
 screen.
 
-```ecko
+```ecko fragment
 import std.cli
 import std.os
 
@@ -52,7 +52,7 @@ error.
 
 A natural pairing: put the defaults in `ecko.json` and let flags override them.
 
-```ecko
+```ecko fragment
 import std.defaults
 opts = cli.parse(spec, os.args())
 port = if opts.port == null { defaults.port } else { int(opts.port) }

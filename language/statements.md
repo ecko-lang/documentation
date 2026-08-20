@@ -15,7 +15,7 @@ An expression continues across a newline only when one of these is true:
 - the next line starts with `|>` or `.`
 - you are inside `(...)` or `[...]`, where newlines are insignificant
 
-```ecko
+```ecko fragment
 total = 1 +
     2                    # trailing operator
 
@@ -39,7 +39,7 @@ error rather than a silently different program.
 `{ ... }` evaluates to its last expression, which is why `if` and `match` can be
 assigned:
 
-```ecko
+```ecko fragment
 status = if age >= 18 { "adult" } else { "minor" }
 ```
 

@@ -90,7 +90,7 @@ See [`cell`](../concurrency/cell.md) and [Channels](../concurrency/channels.md).
 
 ## Python escape hatch
 
-```ecko
+```ecko fragment
 result = py("[x*2 for x in range(5)]")
 ```
 
@@ -107,7 +107,7 @@ Assigning to a builtin name **shadows** it in the current scope rather than
 erroring, so `sum = 0` is always safe. [`ecko check`](../cli/check.md) warns,
 because it is usually accidental. Reach the original through `core.*`:
 
-```ecko
+```ecko fragment
 export fn get(c, key) { ... }
 fn internal(m, k) = core.get(m, k)
 ```

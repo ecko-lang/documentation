@@ -25,9 +25,9 @@ value of each type.
 ## No implicit conversion between kinds
 
 ```ecko
-"count: " + 5          # error
-"count: {5}"           # interpolate instead
-string(5) + " items"   # or convert explicitly
+"count: " + 5  # error
+"count: {5}"  # interpolate instead
+string(5) + " items"  # or convert explicitly
 ```
 
 Ecko does not concatenate a number onto a string for you. The same stance applies
@@ -42,7 +42,7 @@ error** - a binary float must never silently contaminate an exact value. See
 
 ## Conversions
 
-```ecko
+```ecko fragment
 int("42")        float("3.5")     string(99)
 bool(1)          decimal("0.1")   bytes("hi")
 list(b"\x01")    json_encode(v)   json_decode(s)

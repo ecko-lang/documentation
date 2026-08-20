@@ -1,6 +1,6 @@
 # `std.encoding`
 
-```ecko
+```ecko fragment
 import std.encoding
 
 encoding.base64_encode(data)        # data: bytes, or a string's UTF-8 bytes
@@ -25,7 +25,7 @@ what gets base64-encoded.
 The `*_decode_text` forms are the explicit "this is text" variants: identical on
 valid UTF-8, and a loud error otherwise.
 
-```ecko
+```ecko fragment
 img = encoding.base64_decode(payload)          # bytes, correct for a PNG
 name = encoding.base64_decode_text(payload)    # string, errors if not UTF-8
 ```

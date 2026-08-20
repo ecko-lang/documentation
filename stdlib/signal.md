@@ -3,7 +3,7 @@
 OS signal handlers: catch `SIGTERM` and `SIGINT` so a process can finish what it
 started instead of dying wherever it happened to be.
 
-```ecko
+```ecko fragment
 import std.signal
 
 shutdown = signal.on()               # the default set: ["term", "int"]
@@ -88,7 +88,7 @@ and a `kill`.
 `http.serve` already drains on Ctrl-C. Subscribe to `term` when the thing
 stopping you is an orchestrator rather than a person:
 
-```ecko
+```ecko fragment
 import std.http
 import std.signal
 

@@ -2,7 +2,7 @@
 
 Leveled logging with pluggable sinks.
 
-```ecko
+```ecko fragment
 import std.log
 
 log.info("started", { port: 8080 })
@@ -36,7 +36,7 @@ is findable in a way that "started on port 8080" is not.
 
 ## Sinks
 
-```ecko
+```ecko fragment
 log.to_file("app.log", { level: "warn", json: true, max_bytes: 1000000, keep: 5 })
 log.to_stderr({ json: true })
 
@@ -61,7 +61,7 @@ whatever collects it. File sinks need `fs:write` for
 Deliberate, so log output is deterministic and a test can assert on it. Add one
 when you want it:
 
-```ecko
+```ecko fragment
 log.info("started", { at: time.now_iso() })
 ```
 

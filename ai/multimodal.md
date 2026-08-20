@@ -1,6 +1,6 @@
 # Multimodal / vision
 
-```ecko
+```ecko fragment
 import std.image
 img = image.load("chart.png")
 
@@ -11,14 +11,14 @@ The `on` clause attaches image input. The image is a
 [`std.image`](../stdlib/image.md) handle, so a resize or crop pipeline flows
 straight into the call:
 
-```ecko
+```ecko fragment
 small = image.resize(image.load("photo.jpg"), 512, 512)
 ai "describe this" on small
 ```
 
 ## Typed and multiple
 
-```ecko
+```ecko fragment
 type Kind = Chart | Photo | Diagram | Screenshot
 
 ai[Kind] "classify this image" on img            # typed vision output
@@ -60,6 +60,6 @@ Images are tokens, often a lot of them. Resize before sending: a 4000-pixel
 photograph rarely answers a question better than a 1000-pixel one, and costs
 several times more.
 
-```ecko
+```ecko fragment
 ai "read the label" on image.resize(photo, 1024, 1024)
 ```

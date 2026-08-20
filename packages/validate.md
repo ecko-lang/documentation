@@ -6,7 +6,7 @@ A data/input validation library written in Ecko: composable validator functions,
 ecko get github.com/ecko-lang/validate
 ```
 
-```ecko
+```ecko fragment
 import validate
 ```
 
@@ -25,7 +25,7 @@ Every rule of every field runs, so one call reports all the problems rather
 than the first one. A field absent from `data` is validated as null, which
 only `required()` objects to.
 
-```ecko
+```ecko fragment
 errors = validate.check(form, { email: [v.required(), v.email()] })
 ```
 
@@ -49,7 +49,7 @@ validate(data, schema) -> `data` when valid, otherwise raises.
 The raised error has kind `"validation"` and carries the same map `check`
 returns under `errors`, so a handler can render per-field messages.
 
-```ecko
+```ecko fragment
 try { user = validate.validate(body, schema) }
 catch e { respond(422, e.errors) }
 ```
@@ -160,7 +160,7 @@ each(validator) -> applies `validator` to every element of a list.
 Element failures are numbered from 1 and joined into one message, so the
 reader knows which item was wrong.
 
-```ecko
+```ecko fragment
 { tags: [v.list(), v.each(v.min_len(2))] }
 ```
 

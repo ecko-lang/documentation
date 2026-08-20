@@ -6,7 +6,7 @@ A Redis client (RESP2) written in Ecko, over std.net raw sockets + TLS.
 ecko get github.com/ecko-lang/redis-client
 ```
 
-```ecko
+```ecko fragment
 import redis
 ```
 
@@ -46,7 +46,7 @@ and you can call it directly for commands without a helper.
 
 Check the server is answering. Returns "PONG".
 
-```ecko
+```ecko fragment
 sock = connect("127.0.0.1", 6379)
 ping(sock)   # "PONG"
 ```

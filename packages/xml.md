@@ -6,7 +6,7 @@ An XML parser for Ecko: parse to a node tree, query by tag or path, extract text
 ecko get github.com/ecko-lang/xml
 ```
 
-```ecko
+```ecko fragment
 import xml
 ```
 

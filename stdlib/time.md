@@ -1,6 +1,6 @@
 # `std.time`
 
-```ecko
+```ecko fragment
 import std.time
 
 time.now()            # Unix milliseconds
@@ -19,7 +19,7 @@ when the system clock is corrected or adjusted by NTP.
 
 **`monotonic()` never goes backwards.** Use it for durations:
 
-```ecko
+```ecko fragment
 start = time.monotonic()
 do_work()
 elapsed = time.monotonic() - start

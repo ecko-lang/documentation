@@ -2,7 +2,7 @@
 
 Layered configuration: **environment wins over file, file wins over default.**
 
-```ecko
+```ecko fragment
 import std.config
 
 cfg = config.load({

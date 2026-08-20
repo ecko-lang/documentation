@@ -1,6 +1,6 @@
 # `std.hash`
 
-```ecko
+```ecko fragment
 import std.hash
 
 hash.sha256("abc")                  # hex digest
@@ -16,7 +16,7 @@ Inputs are a string or [bytes](../language/bytes.md), either way.
 
 ## Passwords: use `password` and `verify`
 
-```ecko
+```ecko fragment
 stored = hash.password(reveal(plain))     # store this
 ok = hash.verify(reveal(attempt), stored)
 ```
@@ -38,7 +38,7 @@ yourself does not close that gap.
 `hmac_sha256(key, message)` proves a message was produced by someone holding the
 key. This is what signs a cookie or a webhook:
 
-```ecko
+```ecko fragment
 mac = hash.hmac_sha256(reveal(secret_key), payload)
 ```
 

@@ -53,7 +53,7 @@ Temperature conversion helpers.
 
 Convert celsius to fahrenheit.
 
-```ecko
+```ecko fragment
 to_fahrenheit(100.0)   # 212.0
 ```
 

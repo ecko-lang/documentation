@@ -1,6 +1,6 @@
 # Functions & lambdas
 
-```ecko
+```ecko fragment
 fn add(a, b) = a + b                  # expression body
 fn greet(name) = "Hello, {name}!"
 
@@ -19,7 +19,7 @@ still parses but is **deprecated**: [`ecko check`](../cli/check.md) warns and
 A `fn(x) { ... }` body is a **block**, except when the brace opens a map
 literal - no statement can begin with `name :`, so there is no ambiguity:
 
-```ecko
+```ecko fragment
 fn(x) { value: x }      # returns a map
 fn(x) ({ value: x })    # the same thing, said explicitly
 fn(x) { y = x + 1
@@ -33,9 +33,9 @@ fn(x) { y = x + 1
 ```ecko
 fn box(w, h, fill = "-") = fill * (w * h)
 
-box(2, 3)              # positional
-box(2, h: 3)           # named
-box(2, 3, fill: "#")   # positional first, then named
+box(2, 3)  # positional
+box(2, h: 3)  # named
+box(2, 3, fill: "#")  # positional first, then named
 ```
 
 Named arguments bind after positional binding. Passing a parameter twice, naming
@@ -67,8 +67,8 @@ fn make_counter() {
 }
 
 next = make_counter()
-next()      # 1
-next()      # 2
+next()  # 1
+next()  # 2
 ```
 
 The captured scope outlives the defining call. Named functions can be declared
@@ -80,7 +80,7 @@ In parallel contexts the capture is a **snapshot** instead - see
 
 ## `fn` bindings are immutable
 
-```ecko
+```ecko fragment
 fn f() = 1
 f = 2               # error
 let f = fn() 2      # legal
@@ -91,7 +91,7 @@ let f = fn() 2      # legal
 Exits the enclosing function immediately. Often unnecessary, since a block
 evaluates to its last expression, but useful as a guard:
 
-```ecko
+```ecko fragment
 fn handle(x) {
     unless valid(x) { return error_response() }
     process(x)

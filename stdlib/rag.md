@@ -2,7 +2,7 @@
 
 Chunking, embedding, retrieval and grounded answering as one pipeline.
 
-```ecko
+```ecko fragment
 import std.rag
 
 passages = rag.chunk(long_text, size: 120, overlap: 20)
@@ -44,7 +44,7 @@ it** rather than from what it recalls. That is the entire point of RAG.
 
 For a stronger guarantee, add a [contract](../ai/contracts.md):
 
-```ecko
+```ecko fragment
 @ensures("the answer only uses facts from the provided passages")
 fn grounded(hits, q) = rag.answer(hits, q)
 ```

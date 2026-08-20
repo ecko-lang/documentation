@@ -5,7 +5,7 @@ never bytes - so multi-byte text behaves correctly everywhere.
 
 ```ecko
 name = "Ada"
-print("Hello, {name}!")   # {expr} interpolates - see Templates for the full story
+print("Hello, {name}!")  # {expr} interpolates - see Templates for the full story
 ```
 
 A handful of the most common operations are global builtins (`upper`, `lower`,
@@ -16,8 +16,8 @@ A handful of the most common operations are global builtins (`upper`, `lower`,
 ```ecko
 import std.string
 
-string.title("the quick fox")        # "The Quick Fox"
-string.pad_start("7", 4, "0")        # "0007"
+string.title("the quick fox")  # "The Quick Fox"
+string.pad_start("7", 4, "0")  # "0007"
 string.substring("hello world", -5)  # "world" - negatives count from the end
 ```
 
@@ -30,20 +30,20 @@ Strings, lists, and bytes slice with range syntax:
 
 ```ecko
 s = "hello"
-s[1..3]    # "el"    exclusive end
-s[0..=2]   # "hel"   inclusive end
-s[..3]     # "hel"   open start
-s[2..]     # "llo"   open end
-s[-3..]    # "llo"   negative indices count from the end
-s[1..-1]   # "ell"
+s[1..3]  # "el"    exclusive end
+s[0..=2]  # "hel"   inclusive end
+s[..3]  # "hel"   open start
+s[2..]  # "llo"   open end
+s[-3..]  # "llo"   negative indices count from the end
+s[1..-1]  # "ell"
 ```
 
 `slice(s, start, end)` is the same half-open range as a function, for when the
 bounds are computed rather than written:
 
 ```ecko
-slice("hello world", 0, 5)   # "hello"
-slice("héllo", 1, 3)         # "él"   characters, not bytes
+slice("hello world", 0, 5)  # "hello"
+slice("héllo", 1, 3)  # "él"   characters, not bytes
 ```
 
 Slices are total: out-of-range bounds clamp (`s[2..99]` is `"llo"`) and a
@@ -57,8 +57,8 @@ reversed range is empty - a slice takes what's there, it never errors. Single
 backslashes: CSS, regexes, format templates.
 
 ```ecko
-css = r"body { margin: 0 }"        # braces stay literal
-pat = r"\d+\.\d+"                  # no escaping the escapes
+css = r"body { margin: 0 }"  # braces stay literal
+pat = r"\d+\.\d+"  # no escaping the escapes
 ```
 
 For anything containing double quotes, use the triple form. A single `r"..."`
@@ -78,18 +78,18 @@ generated data and needless ceremony for a literal.
 of characters to strip instead of whitespace:
 
 ```ecko
-trim("  hi  ")           # "hi"
-trim("xxhixx", "x")      # "hi" - any char in the set, from both ends
+trim("  hi  ")  # "hi"
+trim("xxhixx", "x")  # "hi" - any char in the set, from both ends
 ```
 
 `split` takes an optional limit capping the number of splits, and `rsplit`
 counts that limit from the right (parts always come back left-to-right):
 
 ```ecko
-split("a,b,c,d", ",", 2)                 # ["a", "b", "c,d"]
+split("a,b,c,d", ",", 2)  # ["a", "b", "c,d"]
 
 import std.string
-string.rsplit("a,b,c,d", ",", 1)         # ["a,b,c", "d"]
+string.rsplit("a,b,c,d", ",", 1)  # ["a,b,c", "d"]
 ```
 
 ## The full `std.string` surface

@@ -6,7 +6,7 @@ A MySQL/MariaDB client written in Ecko: classic protocol + mysql_native_password
 ecko get github.com/ecko-lang/mysql-client
 ```
 
-```ecko
+```ecko fragment
 import mysql
 ```
 

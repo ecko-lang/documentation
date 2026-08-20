@@ -3,7 +3,7 @@
 A thread-safe mutable box. The one place in Ecko where sharing mutable state is
 intentional.
 
-```ecko
+```ecko fragment
 hits = cell(0)
 
 http.serve(8080, fn(req) {
@@ -34,7 +34,7 @@ implied by where a variable was declared.
 
 ## Use `cell_update` for anything read-modify-write
 
-```ecko
+```ecko fragment
 cell_update(hits, fn(v) v + 1)          # atomic
 cell_set(hits, cell_get(hits) + 1)      # races - two workers can read the same v
 ```
@@ -47,9 +47,9 @@ correct under concurrency.
 
 ```ecko
 a = cell(0)
-b = a                # b and a are the same cell
+b = a  # b and a are the same cell
 cell_set(b, 5)
-cell_get(a)          # 5
+cell_get(a)  # 5
 ```
 
 Everything else in Ecko has value semantics - binding a list to a new name gives
@@ -61,7 +61,7 @@ captured into a spawned task.
 **Do not touch the same cell inside its own `cell_update`.** The lock is not
 reentrant, so it deadlocks:
 
-```ecko
+```ecko fragment
 cell_update(c, fn(v) cell_get(c) + 1)   # deadlock
 cell_update(c, fn(v) v + 1)             # v is already the current value
 ```

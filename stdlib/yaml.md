@@ -1,6 +1,6 @@
 # `std.yaml`
 
-```ecko
+```ecko fragment
 import std.yaml
 
 data = yaml.parse(text)

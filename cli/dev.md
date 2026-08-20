@@ -13,7 +13,7 @@ A server started with `http.serve` blocks. `ecko dev` stops the old process and
 starts the new one on each save, so a route change is live without a manual
 restart:
 
-```ecko
+```ecko fragment
 # server.ecko
 import std.http
 import std.web

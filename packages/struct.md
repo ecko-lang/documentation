@@ -6,7 +6,7 @@ Pack and unpack binary data with a struct-style format string, over the bytes ty
 ecko get github.com/ecko-lang/struct
 ```
 
-```ecko
+```ecko fragment
 import struct
 ```
 

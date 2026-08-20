@@ -6,7 +6,7 @@ Descriptive statistics for Ecko: mean, median, mode, variance, stdev, quantiles.
 ecko get github.com/ecko-lang/stats
 ```
 
-```ecko
+```ecko fragment
 import stats
 ```
 

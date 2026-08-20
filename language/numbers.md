@@ -10,7 +10,7 @@ Three numeric types, each for a different job.
 
 ## `int` overflow is an error
 
-```ecko
+```ecko fragment
 9223372036854775807 + 1     # runtime error, not a wraparound
 ```
 
@@ -19,7 +19,7 @@ operation.
 
 ## `float` equality is exact IEEE
 
-```ecko
+```ecko fragment
 0.1 + 0.2 == 0.3            # false
 approx(0.1 + 0.2, 0.3)      # true
 approx(a, b, 0.01)          # explicit epsilon
@@ -33,13 +33,13 @@ default epsilon of `1e-9`.
 ```ecko
 price = 19.99m
 qty = 3
-subtotal = price * qty          # 59.97 exactly
+subtotal = price * qty  # 59.97 exactly
 
 tax_rate = decimal("0.0825")
 total = subtotal + subtotal * tax_rate
 
-print(0.1m + 0.2m)              # 0.3
-print(0.1 + 0.2)                # 0.30000000000000004
+print(0.1m + 0.2m)  # 0.3
+print(0.1 + 0.2)  # 0.30000000000000004
 ```
 
 The rules, chosen so money behaves:
@@ -64,9 +64,9 @@ The rules, chosen so money behaves:
 ## Integer division truncates
 
 ```ecko
-7 / 2        # 3
-7.0 / 2      # 3.5
-float(7) / 2 # 3.5
+7 / 2  # 3
+7.0 / 2  # 3.5
+float(7) / 2  # 3.5
 ```
 
 A common surprise. Convert one operand when you want a fraction.

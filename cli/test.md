@@ -19,7 +19,7 @@ as `<name>_test.ecko`, because a non-recursive archive step would not capture a
 
 ## Writing a test
 
-```ecko
+```ecko fragment
 import std.test
 
 test.case("splits on commas", fn() {

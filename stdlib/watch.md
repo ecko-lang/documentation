@@ -3,7 +3,7 @@
 Filesystem events: `inotify` on Linux, FSEvents on macOS,
 `ReadDirectoryChangesW` on Windows - one surface over all three.
 
-```ecko
+```ecko fragment
 import std.watch
 
 w = watch.open("./inbox", { recursive: true })
@@ -57,7 +57,7 @@ Because `w.events` is a real channel, a watch composes with everything else that
 speaks channels - drain it from a spawned task, or feed it straight into an
 [SSE response](../concurrency/streaming.md):
 
-```ecko
+```ecko fragment
 async fn ingest(w, out) {
     loop {
         e = watch.next(w, 1000)

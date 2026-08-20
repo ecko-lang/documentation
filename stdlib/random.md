@@ -2,7 +2,7 @@
 
 Two generators in one module, and the distinction matters.
 
-```ecko
+```ecko fragment
 import std.random
 
 random.seed(42)                 # reproducible sequence
@@ -29,7 +29,7 @@ seed once at startup if you want reproducibility, and do not expect a
 `random.bytes(n)` and `random.token(n)` draw from **OS entropy**, not the seedable
 RNG. They stay unpredictable even after `random.seed`, which is the entire point:
 
-```ecko
+```ecko fragment
 random.seed(1)
 random.int(1, 100)      # predictable - that is the feature
 random.token(32)        # still unpredictable - that is also the feature

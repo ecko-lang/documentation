@@ -37,7 +37,7 @@ sandboxed from itself; everything you did not write is.
 A denied operation raises `{ kind: "capability", capability, package }` -
 catchable, and specific enough to act on:
 
-```ecko
+```ecko fragment
 try {
     thing.fetch()
 } catch (e) {

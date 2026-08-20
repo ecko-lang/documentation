@@ -33,7 +33,7 @@ Read them with `std.os`, or parse them declaratively with
 
 ```ecko
 import std.os
-print(os.args())        # ["--format", "json", "data.csv"]
+print(os.args())  # ["--format", "json", "data.csv"]
 ```
 
 ## Exit status

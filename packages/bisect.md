@@ -6,7 +6,7 @@ Binary search over a sorted list: insertion points, membership, and order-preser
 ecko get github.com/ecko-lang/bisect
 ```
 
-```ecko
+```ecko fragment
 import bisect
 ```
 

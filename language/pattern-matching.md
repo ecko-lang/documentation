@@ -1,6 +1,6 @@
 # Pattern matching
 
-```ecko
+```ecko fragment
 match value {
     0 => "zero"
     -1 => "negative one"
@@ -17,13 +17,13 @@ An expression: it evaluates to the matched arm.
 
 **Guards** with `when`, evaluated with the arm's bindings in scope:
 
-```ecko
+```ecko fragment
 n when n > 0 => "positive"
 ```
 
 **Maps and structs**, by the subset of fields you name:
 
-```ecko
+```ecko fragment
 match user {
     { role: "admin" } => "admin access"
     { role: "user", active: true } => "active user"
@@ -33,7 +33,7 @@ match user {
 
 **Variants**, positionally by field order:
 
-```ecko
+```ecko fragment
 type Shape = Circle { r: Int } | Square { side: Int }
 
 match shape {
@@ -72,7 +72,7 @@ decoded JSON and model output.
 
 A typed call returning an enum drops straight into an exhaustive match:
 
-```ecko
+```ecko fragment
 type Sentiment = Positive | Negative | Neutral
 
 match ai[Sentiment] "classify: {review}" {

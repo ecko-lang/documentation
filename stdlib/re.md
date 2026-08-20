@@ -1,6 +1,6 @@
 # `std.re`
 
-```ecko
+```ecko fragment
 import std.re
 
 re.test("^a.c$", "abc")                  # true
@@ -19,7 +19,7 @@ re.replace_first("[0-9]", "#", "a1b2")   # "a#b2"
 groups, in order. A pattern that does not match returns `null`, so check before
 indexing:
 
-```ecko
+```ecko fragment
 c = re.captures(pattern, text)
 unless c == null { print(c[1]) }
 ```
@@ -31,7 +31,7 @@ unless c == null { print(c[1]) }
 A regex backslash needs escaping in a normal Ecko string, so `\d` is written
 `"\\d"`. Raw strings avoid the doubling:
 
-```ecko
+```ecko fragment
 re.test(r"\d+", "123")
 ```
 
@@ -44,7 +44,7 @@ An invalid pattern raises `{ kind: "parse" }`, catchable like any other
 operational failure. Compile-time validation is not possible for a pattern built at
 runtime, so validate patterns that come from configuration or user input:
 
-```ecko
+```ecko fragment
 try { re.test(user_pattern, s) } catch (e) { reject("bad pattern") }
 ```
 

@@ -17,13 +17,13 @@ ecko hello.ecko
 ## 2. Values and functions
 
 ```ecko
-name = "Ada"                  # a binding
-mut count = 0                 # explicitly mutable
+name = "Ada"  # a binding
+mut count = 0  # explicitly mutable
 count = count + 1
 
-fn greet(who) = "Hello, {who}!"   # single-expression function
+fn greet(who) = "Hello, {who}!"  # single-expression function
 
-print(greet(name))            # Hello, Ada!
+print(greet(name))  # Hello, Ada!
 ```
 
 Strings interpolate with `{expr}` directly. Functions can be one expression with
@@ -39,7 +39,7 @@ top = scores
     |> sort()
     |> reverse()
 
-print(top)      # [9, 4, 3]
+print(top)  # [9, 4, 3]
 ```
 
 `|>` feeds the value on the left into the call on the right. It binds loosest of
@@ -64,7 +64,7 @@ An untyped call returns text. Ask for a type and you get that type:
 
 ```ecko
 count = ai[Int] "How many days in a week?"
-print(count + 1)              # arithmetic on the result, not on a string
+print(count + 1)  # arithmetic on the result, not on a string
 ```
 
 The type is enforced by coercion through a schema. `ai[Int]` is an `Int` or the
@@ -99,7 +99,7 @@ language, checked by a model. See [Contracts](../ai/contracts.md).
 Rename the checks into a test file and `ecko test` runs them in forced mock
 mode - deterministic, offline, no key:
 
-```ecko
+```ecko fragment
 # hello_test.ecko
 import std.test
 

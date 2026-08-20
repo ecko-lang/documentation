@@ -1,6 +1,6 @@
 # `std.json`
 
-```ecko
+```ecko fragment
 import std.json
 
 json.encode(value)          # value -> string
@@ -42,7 +42,7 @@ Two lossy edges worth knowing, both because JSON has no such type:
 Malformed input raises `{ kind: "parse", format: "json" }`, and `json.read` adds
 `path`. Always catch around anything decoded from outside:
 
-```ecko
+```ecko fragment
 try {
     data = json.decode(body)
 } catch (e) {
