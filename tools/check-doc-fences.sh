@@ -1,4 +1,23 @@
 #!/usr/bin/env bash
+# Extract every ```ecko fenced block from the given Markdown file(s) (or every
+# .md under a directory) and check it: `ecko fmt --check` must accept it
+# byte-identically, then it must run to a non-error exit inside a timeout.
+# A block tagged ```ecko fragment is intentionally partial and is skipped
+# rather than run. Anything else after ```ecko is an unknown info string and
+# fails loudly rather than being silently ignored.
+#
+#   ECKO               path to the ecko binary to run (default: ecko on PATH -
+#                       CI and release-check.sh set this to the freshly built
+#                       target/debug/ecko so a stale PATH binary can't hide a
+#                       break)
+#   ECKO_FENCE_TIMEOUT seconds allowed per fence before it counts as a
+#                       failure (default: 5) - catches a fence that hangs
+#                       instead of erroring
+#
+# Documentation (ecko-lang/Documentation) carries a twin of this script at
+# tools/check-doc-fences.sh for its own public pages. The two repos have no
+# shared build, so keep them in sync by hand: copy this file across
+# byte-for-byte whenever it changes.
 set -euo pipefail
 
 ECKO=${ECKO:-ecko}
@@ -42,8 +61,11 @@ run_timed() {
 for file in "${files[@]}"; do
     in_fence=0
     info=
+    start=0
+    lineno=0
 
     while IFS= read -r line || [[ -n "$line" ]]; do
+        lineno=$((lineno + 1))
         if ((in_fence == 0)); then
             if [[ "$line" == '```ecko'* ]]; then
                 info=${line#\`\`\`}
@@ -51,6 +73,7 @@ for file in "${files[@]}"; do
                 info=${info%"${info##*[![:space:]]}"}
                 : >"$tmpfile"
                 in_fence=1
+                start=$lineno
             fi
             continue
         fi
@@ -65,8 +88,10 @@ for file in "${files[@]}"; do
             ecko)
                 run_count=$((run_count + 1))
                 if ! "$ECKO" fmt --check "$tmpfile"; then
+                    echo "$file:$start: fence failed (fmt --check)" >&2
                     fail_count=$((fail_count + 1))
                 elif ! run_timed "$ECKO" "$tmpfile"; then
+                    echo "$file:$start: fence failed (run)" >&2
                     fail_count=$((fail_count + 1))
                 fi
                 ;;
@@ -74,14 +99,14 @@ for file in "${files[@]}"; do
                 skip_count=$((skip_count + 1))
                 ;;
             ecko*)
-                echo "$file: unknown fence info: $info" >&2
+                echo "$file:$start: unknown fence info: $info" >&2
                 fail_count=$((fail_count + 1))
                 ;;
         esac
     done <"$file"
 
     if ((in_fence != 0)); then
-        echo "$file: unterminated ecko fence" >&2
+        echo "$file:$start: unterminated ecko fence" >&2
         fail_count=$((fail_count + 1))
     fi
 done
