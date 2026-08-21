@@ -13,9 +13,11 @@ language client that launches `ecko lsp`.
 
 ### Install from a VSIX
 
-Package from the language repo (`editors/vscode-ecko`) and install:
+Package it from the [editors repo](https://github.com/ecko-lang/editors) and
+install:
 
 ```bash
+git clone https://github.com/ecko-lang/editors
 cd editors/vscode-ecko
 npm install
 npx @vscode/vsce package
@@ -75,7 +77,8 @@ have a first-party plugin, including the free Community editions.
 ### The plugin
 
 Install **Ecko** from the plugin marketplace, or build it from
-`editors/jetbrains-ecko` and install the zip through **Settings → Plugins → the
+[`ecko-lang/editors`](https://github.com/ecko-lang/editors)'s `jetbrains-ecko`
+and install the zip through **Settings → Plugins → the
 gear icon → Install Plugin from Disk...**.
 
 It gives you syntax highlighting from the same grammar the VS Code extension
